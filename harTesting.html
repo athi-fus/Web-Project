@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            fetch("sourceforge.net.har")
+            .then(function(resp){
+                return resp.json();
+            })
+            .then(function(data){
+                console.log(data);
+            })
+        </script>
+    </body>
+</html>
