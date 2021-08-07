@@ -4,24 +4,23 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit038cd1b33623489896f8a2ba6cd05268
+class ComposerStaticInit588e7aa0bd2a537b98d70a168fc79436
 {
+    public static $files = array (
+        'ace6d88241f812b4accb2d847454aef6' => __DIR__ . '/..' . '/halaxa/json-machine/src/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'J' => 
         array (
-            'JsonStreamingParser\\Test\\' => 25,
-            'JsonStreamingParser\\' => 20,
+            'JsonMachine\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'JsonStreamingParser\\Test\\' => 
+        'JsonMachine\\' => 
         array (
-            0 => __DIR__ . '/..' . '/salsify/json-streaming-parser/tests',
-        ),
-        'JsonStreamingParser\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/salsify/json-streaming-parser/src',
+            0 => __DIR__ . '/..' . '/halaxa/json-machine/src',
         ),
     );
 
@@ -32,9 +31,9 @@ class ComposerStaticInit038cd1b33623489896f8a2ba6cd05268
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit038cd1b33623489896f8a2ba6cd05268::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit038cd1b33623489896f8a2ba6cd05268::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit038cd1b33623489896f8a2ba6cd05268::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit588e7aa0bd2a537b98d70a168fc79436::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit588e7aa0bd2a537b98d70a168fc79436::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit588e7aa0bd2a537b98d70a168fc79436::$classMap;
 
         }, null, ClassLoader::class);
     }
