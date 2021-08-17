@@ -1,0 +1,45 @@
+
+CREATE TABLE users (
+    email VARCHAR(100) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (email)
+);
+
+CREATE TABLE har_file (
+    id_har int NOT NULL AUTO_INCREMENT,
+    user_email VARCHAR(100) NOT NULL,
+    provider VARCHAR(100),
+    PRIMARY KEY (id_har,user_email),
+    FOREIGN KEY (user_email) REFERENCES user(email)
+);
+
+CREATE TABLE entries (
+    id_har int NOT NULL,
+    id_entry int NOT NULL AUTO_INCREMENT,
+    startedDateTime TIMESTAMP,
+    wait int,
+    serverIPAddress VARCHAR(100),
+    req_method VARCHAR(100),
+    req_url TEXT,
+    res_status int,
+    res_status_text VARCHAR(100),
+    PRIMARY KEY (id_har,id_entry),
+    FOREIGN KEY (id_har) REFERENCES har_file(id_har)
+);
+
+
+CREATE TABLE header (
+    id_entry int NOT NULL,
+    id_header int NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100),
+    value VARCHAR(100),
+    kind_of_header ENUM('request', 'response'),  
+    PRIMARY KEY (id_entry,id_header),
+    FOREIGN KEY (id_entry) REFERENCES entries(id_entry)
+);
+
+
+
+
+
