@@ -11,7 +11,7 @@ CREATE TABLE har_file (
     user_email VARCHAR(100) NOT NULL,
     provider VARCHAR(100),
     PRIMARY KEY (id_har,user_email),
-    FOREIGN KEY (user_email) REFERENCES user(email)
+    FOREIGN KEY (user_email) REFERENCES userσ(email)
 );
 
 CREATE TABLE entries (
@@ -24,7 +24,7 @@ CREATE TABLE entries (
     req_url TEXT,
     res_status int,
     res_status_text VARCHAR(100),
-    PRIMARY KEY (id_har,id_entry),
+    PRIMARY KEY (id_entry,id_har),
     FOREIGN KEY (id_har) REFERENCES har_file(id_har)
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE header (
     name VARCHAR(100),
     value VARCHAR(100),
     kind_of_header ENUM('request', 'response'),  
-    PRIMARY KEY (id_entry,id_header),
+    PRIMARY KEY (id_header,id_entry),
     FOREIGN KEY (id_entry) REFERENCES entries(id_entry)
 );
 
