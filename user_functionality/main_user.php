@@ -16,7 +16,7 @@ else {
 
 <html>
   <head>
-  <link rel="icon" href="image.png" type="image/gif" sizes="16x16">
+  <link rel="icon" href="imgs/image.png" type="image/gif" sizes="16x16">
   <style>
     body{
             /* background-image: url("cats.jpg");*/
@@ -170,7 +170,7 @@ else {
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-      <img src="image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
       harHARias</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
