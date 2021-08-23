@@ -1,52 +1,55 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        
-        <script src="https://kit.fontawesome.com/6a2ce70579.js" crossorigin="anonymous"></script>
 
-        <style> 
-        
-        html{
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script src="https://kit.fontawesome.com/6a2ce70579.js" crossorigin="anonymous"></script>
+
+    <style>
+        html {
             /* background-image: url("cats.jpg");*/
             height: 100%;
             background-image: linear-gradient(to bottom right, rgb(102, 178, 2535), rgb(0, 0, 102));
         }
 
-        input[type=text], input[type=email], input[type=password]{
-          width: 100%;
-          padding: 12px 20px;
-          margin: 3px 0;
-          box-sizing: border-box;
-          border: 3px solid #ccc;
-          -webkit-transition: 0.5s;
-          transition: 0.5s;
-          outline: none;
+        input[type=text],
+        input[type=email],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 3px 0;
+            box-sizing: border-box;
+            border: 3px solid #ccc;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
         }
 
-        input[type=submit]{
-          width: 100%;          
-          outline: none;
-          font-size: 1rem;
-          background-color: #4B83AE;
-          border: 0;
-          color: white;
-          padding: 16px 32px;
-          text-decoration: none;
-          margin: 4px 2px;
-          cursor: pointer;
+        input[type=submit] {
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+            background-color: #4B83AE;
+            border: 0;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
 
         }
-        
-         input:not(#submit):focus {
-          border: 3px solid #555;
+
+        input:not(#submit):focus {
+            border: 3px solid #555;
         }
-        label{
+
+        label {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:medium;
+            font-size: medium;
             color: rgb(43, 11, 58);
         }
 
-       .suf {
+        .suf {
             background-color: rgba(240, 240, 240, .8);
             display: block;
             width: 300px;
@@ -68,7 +71,7 @@
             padding-bottom: 30px;
             padding-top: 15px;
 
-            
+
         }
 
 
@@ -87,70 +90,89 @@
 
         /* The message box is shown when the user clicks on the password field */
         #message {
-        display:none;
-        color: rgb(39, 39, 39);
-        position: relative;
-        padding: 1px;
-        margin-top: 5px;
-        padding-left: 10px;
-        padding-bottom: 10px;
-        border-radius: 3%;
+            display: none;
+            color: rgb(39, 39, 39);
+            position: relative;
+            padding: 1px;
+            margin-top: 5px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            border-radius: 3%;
         }
 
-        .msg{
+        .msg {
             background-color: rgba(240, 240, 240, 0.8);
             font-family: Arial, Helvetica, sans-serif;
             display: grid;
             width: 380px;
             border: 5px solid rgb(161, 78, 255);
-            
-            float:left;
+
+            float: left;
             border-radius: 3%;
             position: absolute;
             top: -350px;
             left: 67%;
             animation-name: example;
             animation-duration: 3s;
+        }
+
+        @keyframes example {
+            0% {
+                left: 67%;
+                top: -900px;
             }
 
-            @keyframes example {
-            0%   { left:67%; top:-900px;}
-            25%  { left:67%; top:-900px;}
-            50%  { left:67%; top:-350px;}
-            75%  { left:67%; top:-350px;}
-            100% { left:67%; top:-350px;}
+            25% {
+                left: 67%;
+                top: -900px;
             }
+
+            50% {
+                left: 67%;
+                top: -350px;
+            }
+
+            75% {
+                left: 67%;
+                top: -350px;
+            }
+
+            100% {
+                left: 67%;
+                top: -350px;
+            }
+        }
 
 
         #message span {
-        padding: 10px 35px;
-        font-size: 14px;
+            padding: 10px 35px;
+            font-size: 14px;
         }
 
         /* Add a green text color and a checkmark when the requirements are right */
         .valid {
-        color: green;
+            color: green;
         }
 
         .valid:before {
-        font-family: "Font Awesome 5 Free";  
-        position: relative;
-        left: -35px;
-        font-weight: 900;
-        content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            position: relative;
+            left: -35px;
+            font-weight: 900;
+            content: "\f00c";
         }
 
         /* Add a red text color and an "x" icon when the requirements are wrong */
         .invalid {
-        color: rgb(155, 2, 2);
+            color: rgb(155, 2, 2);
         }
 
         .invalid:before {
-        font-family: "Font Awesome 5 Free"; 
-        position: relative;
-        left: -35px;
-        font-weight: 900;
-        content: "\f00d";
+            font-family: "Font Awesome 5 Free";
+            position: relative;
+            left: -35px;
+            font-weight: 900;
+            content: "\f00d";
         }
 
 
@@ -164,94 +186,110 @@
             z-index: 2;
         }
 
-        .container{
-            padding-top:50px;
+        .container {
+            padding-top: 50px;
             margin: auto;
         }
 
 
 
-        span{
-          font-family: Arial, Helvetica, sans-serif;
+        span {
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         #form-messages {
-        background-color: rgb(255, 232, 232);
-        border: 3px solid red;
-        color: red;
-        display: none;
-        font-size: 13px;
-        font-weight: bold;
-        margin-bottom: 5px;
-        padding: 10px 25px;
-        max-width: 250px;
-        font-family: Arial, Helvetica, sans-serif;
-        position: absolute;
+            background-color: rgb(255, 232, 232);
+            border: 3px solid red;
+            color: red;
+            display: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            padding: 10px 25px;
+            max-width: 250px;
+            font-family: Arial, Helvetica, sans-serif;
+            position: absolute;
             top: 180px;
             left: 40.3%;
-        border-radius: 5%;
-    }
+            border-radius: 5%;
+        }
 
-        </style>
-        </head>
+        #signup {
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+            border: 0;
+            color: rgb(0, 0, 102);
+            padding: 1px 50px;
+            text-decoration: none;
+            margin: 70px 23px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-    <body>
-        <div class="su">
-             <span>Login</span>
-        </div>
-        
-        <div class="suf">
-            
-                
-            
-                <input type="email" id="email" name="email" placeholder="abc@email.com" required /> 
-                <label for="email">&nbsp;Email</label><br><br>
-                
-                
-                <input type="password" id="pwd" name="pwd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                <span id="see" toggle="#pwd" class="fa fa-fw fa-eye field-icon toggle-password" onclick="myFunction()" ></span><br>
-                <label for="pwd">&nbsp;Password</label><br><br>
-                
+<body>
+    <div class="su">
+        <span>Login</span>
+    </div>
 
-                <input id="submit" name="submit" type="submit" value="Login" >
-            
-                
-        </div>
+    <div class="suf">
 
-        <ul id="form-messages"></ul> <!--NEWNEWNEWNEWNEW--> 
-        
-        
 
-        <div class="msg" id="message">
-            <h3>Password must contain the following:</h3>
-            <span id="letter" class="invalid">A <b>symbol</b> character</span><br>
-            <span id="capital" class="invalid">A <b>capital (uppercase)</b> letter</span><br>
-            <span id="number" class="invalid">A <b>number</b></span><br>
-            <span id="length" class="invalid">Minimum <b>8 characters</b></span><br>
-        </div>
-    
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="jquery.js"></script>
+        <input type="email" id="email" name="email" placeholder="abc@email.com" required />
+        <label for="email">&nbsp;Email</label><br><br>
 
-        <script type="text/javascript">
-            var myPwd = document.getElementById("see");/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-            var myInput = document.getElementById("pwd");
-            var letter = document.getElementById("letter"); /*change to symbol etc<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-            var capital = document.getElementById("capital");
-            var number = document.getElementById("number");
-            var length = document.getElementById("length");
 
-            function myFunction() {
-                var x = document.getElementById("pwd");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            } 
+        <input type="password" id="pwd" name="pwd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            required>
+        <span id="see" toggle="#pwd" class="fa fa-fw fa-eye field-icon toggle-password"
+            onclick="myFunction()"></span><br>
+        <label for="pwd">&nbsp;Password</label><br><br>
 
-            const form = {
+
+        <input id="submit" name="submit" type="submit" value="Login">
+
+        <a id="signup" href="sign_up.html">Haven't signed up yet..?</a>
+
+
+    </div>
+
+    <ul id="form-messages"></ul>
+    <!--NEWNEWNEWNEWNEW-->
+
+
+
+    <div class="msg" id="message">
+        <h3>Password must contain the following:</h3>
+        <span id="letter" class="invalid">A <b>symbol</b> character</span><br>
+        <span id="capital" class="invalid">A <b>capital (uppercase)</b> letter</span><br>
+        <span id="number" class="invalid">A <b>number</b></span><br>
+        <span id="length" class="invalid">Minimum <b>8 characters</b></span><br>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <script type="text/javascript">
+        var myPwd = document.getElementById("see");/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        var myInput = document.getElementById("pwd");
+        var letter = document.getElementById("letter"); /*change to symbol etc<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        function myFunction() {
+            var x = document.getElementById("pwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        const form = {
             email: document.getElementById('email'),
             password: document.getElementById('pwd'),
             submit: document.getElementById('submit'),
@@ -282,12 +320,12 @@
             request.send(requestData);
         });
 
-        function handleResponse (responseObject) {
+        function handleResponse(responseObject) {
             if (responseObject.ok) {
                 //start session here
                 //pass email as the session variable 
                 location.href = 'main_user.php';
-                
+
             } else {
                 while (form.messages.firstChild) {
                     form.messages.removeChild(form.messages.firstChild);
@@ -302,9 +340,8 @@
                 form.messages.style.display = "block";
             }
         }
-        </script>    
-    </body>
-     
+    </script>
+</body>
+
 
 </html>
-
