@@ -3,7 +3,7 @@
 $serverName = "localhost";
 $userName = "root";
 $password = "";
-$databaseName = "webdb";
+$databaseName = "web2021";
 
 $connection = mysqli_connect($serverName, $userName, $password, $databaseName);
 

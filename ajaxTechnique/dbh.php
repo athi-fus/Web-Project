@@ -3,6 +3,6 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ajax";
+$dbname = "web2021";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
