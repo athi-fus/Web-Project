@@ -17,7 +17,7 @@
             $("#btn").click(function(){
                 console.log("Success");
                 commentsCount += 2;
-                $("#comments").load("load-comments.php", {
+                $("#comments").load("loadFields.php", {
                     commentsNewCount: commentsCount
                 });
             });
@@ -28,14 +28,14 @@
 <body>
     <div id="comments">
         <?php 
-            $sql = "SELECT * FROM comments LIMIT 2";
+            $sql = "SELECT id_entry,value FROM header LIMIT 2";
             $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_assoc($result)){
                     echo "<p>";
-                    echo $row['author'];
+                    echo $row['id_entry'];
                     echo "<br>";
-                    echo $row['message'];
+                    echo $row['value'];
                     echo "</p>";
 
                 }
