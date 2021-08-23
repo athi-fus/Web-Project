@@ -22,7 +22,7 @@ require_once 'vendor/autoload.php';
  
  $insertRecordQuery = "INSERT INTO har_file VALUES(null,'user1@email.com','cosmote')";
  if(mysqli_query($connection, $insertRecordQuery)){
-  echo "success";
+  //echo "success";
 }
 else{
   echo "error:".mysqli_error($connection);
@@ -161,7 +161,7 @@ else{
   
   $insertRecordQuery = "INSERT INTO entries VALUES('".$har_id."',null,'".$startedDateTime."','".$wait."','".$serverIPAddress."','".$method."','".$url."','".$status."','".$statusText."')";
   if(mysqli_query($connection, $insertRecordQuery)){
-    echo "success";
+    //echo "success";
  }
  else{
     echo "error:".mysqli_error($connection);
@@ -179,7 +179,7 @@ else{
  for ($i = 0; $i <= sizeof($req_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$req_head_name[$i]."','".$req_head_value[$i]."', 'request')";
   if(mysqli_query($connection, $insertRecordQuery)){
-    echo "success";
+    //echo "success";
  }
  else{
     echo "error:".mysqli_error($connection);
@@ -190,7 +190,7 @@ else{
 for ($i = 0; $i <= sizeof($res_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$res_head_name[$i]."','".$res_head_value[$i]."', 'response')";
   if(mysqli_query($connection, $insertRecordQuery)){
-    echo "success";
+    //echo "success";
  }
  else{
     echo "error:".mysqli_error($connection);
