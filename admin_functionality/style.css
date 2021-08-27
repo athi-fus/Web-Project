@@ -2,6 +2,8 @@
 
 body {
   margin: 0px;
+  background-color: #555652;
+  font-family: "Lato", sans-serif;
 }
 
 .container {
@@ -29,7 +31,7 @@ body {
 }
 
 .nav-link-wrapper a {
-  color: rgb(0, 0, 102);
+  color: #222;
   text-decoration: none;
   transition: color 0.5s;
 }
@@ -42,9 +44,102 @@ body {
   color: rgb(194, 153, 255);
 }
 
+.active-nav-link {
+  border-bottom: 2px solid black;
+}
+
+.active-nav-link a {
+  color: rgb(
+    194,
+    153,
+    255
+  ) !important; /*Its important in order to override the default color*/
+}
+
 /* Graph-Styles */
 
-.graph-items-wrapper {
+/* .graph-items-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+} */
+
+/* .graph-item-wrapper {
+  position: relative;
+  height: 350px;
+  width: 50%;
+} */
+
+.chart {
+  width: 65%;
+  background: #222;
+  border: 2px solid #555652;
+  margin-top: 5px;
+  margin-left: 250px;
+}
+
+.text-info {
+  text-align: center;
+  margin-top: 10px;
+  color: rgb(194, 153, 255);
+  font-style: italic;
+  font-size: 120%;
+}
+
+.buttonsLayout {
+  margin-left: 200px;
+  margin-top: 20px;
+  /* border: 3px solid black; */
+  box-sizing: inherit;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+}
+
+.selectButton {
+  margin-left: 10px;
+  margin-right: 10px;
+  align-items: center;
+  color: rgb(194, 153, 255);
+  background-color: #222;
+  font-size: 110%;
+  border-radius: 4px;
+  border: none;
+  transition: ease-out 0.3s;
+  outline: none;
+  border: 2px solid rgb(194, 153, 255);
+  position: relative;
+  z-index: 1;
+}
+
+.selectButton:hover {
+  color: #222;
+  cursor: pointer;
+}
+
+.selectButton::before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background-color: rgb(194, 153, 255);
+}
+
+.selectButton:hover::before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: -1;
+}
+
+.welcomeText {
+  text-align: center;
+  margin-top: 10px;
+  color: rgb(194, 153, 255);
+  font-style: italic;
+  font-size: 120%;
 }

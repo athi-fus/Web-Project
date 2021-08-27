@@ -12,4 +12,5 @@
     }
     $users = intval($users);
     echo json_encode($users);
+    $conn->close();
 ?>
