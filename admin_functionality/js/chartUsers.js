@@ -340,10 +340,10 @@ $("#selectAge").click(function(){
             output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[0].ContentType +' in database are: '+ counter[0].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[1].ContentType +' in database are: '+ counter[1].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[2].ContentType +' in database are: '+ counter[2].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[3].ContentType +' in database are: '+ counter[3].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[0].ContentType +' in database is: '+ counter[0].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[1].ContentType +' in database is: '+ counter[1].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[2].ContentType +' in database is: '+ counter[2].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[3].ContentType +' in database is: '+ counter[3].AverageAge + '</div>'+
                 '</div>';
                 
             // document.getElementById("welcomeText").innerHTML = '';
