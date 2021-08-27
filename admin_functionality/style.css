@@ -2,6 +2,9 @@
 
 body {
   margin: 0px;
+  display: grid;
+  place-content: center;
+  /* text-align: center; */
   background-color: #555652;
   font-family: "Lato", sans-serif;
 }
@@ -45,7 +48,7 @@ body {
 }
 
 .active-nav-link {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
 .active-nav-link a {
@@ -70,25 +73,48 @@ body {
 } */
 
 .chart {
-  width: 65%;
+  width: 80%;
   background: #222;
   border: 2px solid #555652;
   margin-top: 5px;
-  margin-left: 250px;
+  margin-left: 90px;
 }
 
 .text-info {
+  position: relative;
+  width: max-content;
   text-align: center;
+  font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
+  margin-left: 270px;
   color: rgb(194, 153, 255);
   font-style: italic;
   font-size: 120%;
 }
 
+.text-info::before,
+.text-info::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-info::before {
+  background: #555652;
+  animation: typewriter 4s steps(64) 1s forwards;
+}
+
+.text-info::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter 4s steps(64) 1s forwards, blink 750ms steps(63) infinite;
+}
+
 .buttonsLayout {
-  margin-left: 200px;
   margin-top: 20px;
-  /* border: 3px solid black; */
   box-sizing: inherit;
   transition-property: all;
   transition-duration: 0.6s;
@@ -137,9 +163,45 @@ body {
 }
 
 .welcomeText {
-  text-align: center;
-  margin-top: 10px;
-  color: rgb(194, 153, 255);
+  position: relative;
+  width: max-content;
+  font-family: "Share Tech Mono", monospace;
   font-style: italic;
   font-size: 120%;
+  margin-top: 10px;
+  margin-left: 210px;
+  color: rgb(194, 153, 255);
+}
+
+.welcomeText::before,
+.welcomeText::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.welcomeText::before {
+  background: #555652;
+  animation: typewriter 6s steps(63) 1s forwards;
+}
+
+.welcomeText::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter 6s steps(63) 1s forwards, blink 750ms steps(63) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
 }

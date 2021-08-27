@@ -24,7 +24,7 @@ $("#selectUsers").click(function(){
             data: {
                 labels: ['Users'],
                 datasets: [{
-                    label: 'Sum of registered users',
+                    label: 'Records of registered users',
                     data: [counter],
                     backgroundColor: 'rgb(194, 153, 255)',
                     borderWidth: 1,

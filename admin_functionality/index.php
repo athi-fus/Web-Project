@@ -24,7 +24,7 @@
                 <div class="canvas-item" id="canvas-item">
                     <canvas class="chart" id="myChart"></canvas>
                 </div>
-                <div class="welcomeText" id="welcomeText">Please select on of the following to be displayed on the graph:</div>
+                <div class="welcomeText" id="welcomeText">Please select one of the following to be displayed on the graph:</div>
                 <div class="buttonsLayout">
                     <button class="selectButton" id="selectUsers">Registered users</button>
                     <button class="selectButton" id="selectReqMethods">Records Per Methods</button>
