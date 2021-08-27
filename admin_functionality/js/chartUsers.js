@@ -12,10 +12,10 @@ $("#selectUsers").click(function(){
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info">Records of registered users in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of registered users in database are: '+ counter + '</div>'+
                 '</div>';
             
-        document.getElementById("welcomeText").innerHTML = '';
+        // document.getElementById("welcomeText").innerHTML = '';
         document.getElementById("canvas-item").innerHTML = output;
 
         const ctx = document.getElementById('myChart').getContext('2d');
@@ -82,11 +82,11 @@ $("#selectReqMethods").click(function(){
             output += 
                     '<div class="canvas-item">'+
                         '<canvas class="chart" id="myChart"></canvas>'+
-                        '<div class="text-info">Records per Method: '+ counter[0].req_method +' in database are: '+ counter[0].number + '</div>'+
-                        '<div class="text-info">Records per Method: '+ counter[1].req_method +' in database are: '+ counter[1].number + '</div>'+
+                        '<div class="text-info-js">Records per Method: '+ counter[0].req_method +' in database are: '+ counter[0].number + '</div>'+
+                        '<div class="text-info-js">Records per Method: '+ counter[1].req_method +' in database are: '+ counter[1].number + '</div>'+
                     '</div>';
                 
-            document.getElementById("welcomeText").innerHTML = '';
+            // document.getElementById("welcomeText").innerHTML = '';
             document.getElementById("canvas-item").innerHTML = output;
             
         
@@ -148,13 +148,13 @@ $("#selectResponseStatus").click(function(){
             output += 
                     '<div class="canvas-item">'+
                         '<canvas class="chart" id="myChart"></canvas>'+
-                        '<div class="text-info">Records per Status: '+ counter[0].res_status +' in database are: '+ counter[0].number + '</div>'+
-                        '<div class="text-info">Records per Status: '+ counter[1].res_status +' in database are: '+ counter[1].number + '</div>'+
-                        '<div class="text-info">Records per Status: '+ counter[2].res_status +' in database are: '+ counter[2].number + '</div>'+
-                        '<div class="text-info">Records per Status: '+ counter[3].res_status +' in database are: '+ counter[3].number + '</div>'+
+                        '<div class="text-info-js">Records per Status: '+ counter[0].res_status +' in database are: '+ counter[0].number + '</div>'+
+                        '<div class="text-info-js">Records per Status: '+ counter[1].res_status +' in database are: '+ counter[1].number + '</div>'+
+                        '<div class="text-info-js">Records per Status: '+ counter[2].res_status +' in database are: '+ counter[2].number + '</div>'+
+                        '<div class="text-info-js">Records per Status: '+ counter[3].res_status +' in database are: '+ counter[3].number + '</div>'+
                     '</div>';
                 
-            document.getElementById("welcomeText").innerHTML = '';
+            // document.getElementById("welcomeText").innerHTML = '';
             document.getElementById("canvas-item").innerHTML = output;
             
         
@@ -215,10 +215,10 @@ $("#selectDomains").click(function(){
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info">Records of unique domains in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of unique domains in database are: '+ counter + '</div>'+
                 '</div>';
             
-        document.getElementById("welcomeText").innerHTML = '';
+        // document.getElementById("welcomeText").innerHTML = '';
         document.getElementById("canvas-item").innerHTML = output;
 
         const ctx = document.getElementById('myChart').getContext('2d');
@@ -277,10 +277,10 @@ $("#selectISP").click(function(){
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info">Records of unique ISPs in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of unique ISPs in database are: '+ counter + '</div>'+
                 '</div>';
             
-        document.getElementById("welcomeText").innerHTML = '';
+        // document.getElementById("welcomeText").innerHTML = '';
         document.getElementById("canvas-item").innerHTML = output;
 
         const ctx = document.getElementById('myChart').getContext('2d');
@@ -321,6 +321,74 @@ $("#selectISP").click(function(){
             }
         });  
         
+    };
+    uReq.send();
+});
+
+$("#selectAge").click(function(){
+
+    let uReq = new XMLHttpRequest(); // New request object
+
+            
+    uReq.open("get", "sql/loadAvgAge.php", true);
+    uReq.onload = function() {
+        const counter = JSON.parse(this.responseText);
+        console.log(counter); 
+        
+         for(var i in counter){
+            var output='';
+            output += 
+                '<div class="canvas-item">'+
+                    '<canvas class="chart" id="myChart"></canvas>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[0].ContentType +' in database are: '+ counter[0].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[1].ContentType +' in database are: '+ counter[1].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[2].ContentType +' in database are: '+ counter[2].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: '+ counter[3].ContentType +' in database are: '+ counter[3].AverageAge + '</div>'+
+                '</div>';
+                
+            // document.getElementById("welcomeText").innerHTML = '';
+            document.getElementById("canvas-item").innerHTML = output;
+            
+        
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [counter[0].ContentType,counter[1].ContentType,counter[2].ContentType,counter[3].ContentType],
+                    datasets: [{
+                        label: 'Average Age per Content-type',
+                        data: [counter[0].AverageAge,counter[1].AverageAge,counter[2].AverageAge,counter[3].AverageAge],
+                        backgroundColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
+                        borderWidth: 1,
+                        barThickness: 20,
+                        borderColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
+                        hoverBorderWidth: 3,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive:false,
+                    plugins:{
+                        legend:{
+                            labels:{
+                                color: 'rgb(194, 153, 255)',
+                                font:{
+                                    size:12,
+                                    family: 'Lato',
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+                
+             });  
+        }
     };
     uReq.send();
 });

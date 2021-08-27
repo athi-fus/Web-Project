@@ -2,9 +2,8 @@
 
 body {
   margin: 0px;
-  display: grid;
+  /* display: grid; */
   place-content: center;
-  /* text-align: center; */
   background-color: #555652;
   font-family: "Lato", sans-serif;
 }
@@ -12,46 +11,53 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr;
+  background-color: #343a40;
 }
 
 /* Nav Styles */
 
-.nav-wrapper {
+/* .nav-wrapper {
   display: flex;
   justify-content: center;
-  padding: 38px;
+  padding-top: 10px;
+}
+
+.text-logo {
+  margin-right: 250px;
+  margin-top: 0px;
+  color: black;
+  text-decoration: none;
 }
 
 .nav-wrapper > div {
   margin-right: 30px;
-  font-size: 1.3em;
-}
+  font-size: 1.2em;
+}*/
 
-.nav-link-wrapper {
-  height: 22px;
+.nav-item {
   border-bottom: 1px solid transparent;
   transition: border-bottom 0.5s;
 }
 
-.nav-link-wrapper a {
-  color: #222;
+.nav-item a {
+  color: black;
   text-decoration: none;
   transition: color 0.5s;
 }
 
-.nav-link-wrapper:hover {
-  border-bottom: 1px solid black;
+.nav-item:hover {
+  border-bottom: 2px solid black;
 }
 
-.nav-link-wrapper a:hover {
+.nav-item a:hover {
   color: rgb(194, 153, 255);
 }
 
-.active-nav-link {
-  border-bottom: 1px solid black;
+.active {
+  border-bottom: 2px solid black;
 }
 
-.active-nav-link a {
+.active a {
   color: rgb(
     194,
     153,
@@ -73,27 +79,27 @@ body {
 } */
 
 .chart {
-  width: 80%;
+  width: 55%;
   background: #222;
   border: 2px solid #555652;
   margin-top: 5px;
-  margin-left: 90px;
+  margin-left: 340px;
 }
 
-.text-info {
+.text-info-js {
   position: relative;
   width: max-content;
   text-align: center;
   font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
-  margin-left: 270px;
+  margin-left: 500px;
   color: rgb(194, 153, 255);
   font-style: italic;
   font-size: 120%;
 }
 
-.text-info::before,
-.text-info::after {
+.text-info-js::before,
+.text-info-js::after {
   content: "";
   position: absolute;
   top: 0;
@@ -102,19 +108,53 @@ body {
   left: 0;
 }
 
-.text-info::before {
+.text-info-js::before {
   background: #555652;
   animation: typewriter 4s steps(64) 1s forwards;
 }
 
-.text-info::after {
+.text-info-js::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter 4s steps(64) 1s forwards, blink 750ms steps(63) infinite;
+}
+
+.text-info-age {
+  position: relative;
+  width: max-content;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  margin-top: 10px;
+  margin-left: 345px;
+  color: rgb(194, 153, 255);
+  font-style: italic;
+  font-size: 120%;
+}
+
+.text-info-age::before,
+.text-info-age::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-info-age::before {
+  background: #555652;
+  animation: typewriter 4s steps(64) 1s forwards;
+}
+
+.text-info-age::after {
   width: 0.125em;
   background: black;
   animation: typewriter 4s steps(64) 1s forwards, blink 750ms steps(63) infinite;
 }
 
 .buttonsLayout {
-  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 220px;
   box-sizing: inherit;
   transition-property: all;
   transition-duration: 0.6s;
@@ -122,23 +162,22 @@ body {
 }
 
 .selectButton {
+  position: relative;
   margin-left: 10px;
   margin-right: 10px;
-  align-items: center;
   color: rgb(194, 153, 255);
-  background-color: #222;
+  background-color: #343a40;
   font-size: 110%;
   border-radius: 4px;
   border: none;
   transition: ease-out 0.3s;
   outline: none;
   border: 2px solid rgb(194, 153, 255);
-  position: relative;
   z-index: 1;
 }
 
 .selectButton:hover {
-  color: #222;
+  color: #343a40;
   cursor: pointer;
 }
 
@@ -168,8 +207,9 @@ body {
   font-family: "Share Tech Mono", monospace;
   font-style: italic;
   font-size: 120%;
-  margin-top: 10px;
-  margin-left: 210px;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  margin-left: 400px;
   color: rgb(194, 153, 255);
 }
 
@@ -185,13 +225,13 @@ body {
 
 .welcomeText::before {
   background: #555652;
-  animation: typewriter 6s steps(63) 1s forwards;
+  animation: typewriter 4s steps(63) 1s forwards;
 }
 
 .welcomeText::after {
   width: 0.125em;
   background: black;
-  animation: typewriter 6s steps(63) 1s forwards, blink 750ms steps(63) infinite;
+  animation: typewriter 4s steps(63) 1s forwards, blink 750ms steps(63) infinite;
 }
 
 @keyframes typewriter {
