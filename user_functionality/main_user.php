@@ -149,6 +149,87 @@ else {
   color: rgb(0,0,0);
 }
 
+/*------------------------------------------------------------------------------------------- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3D2AAD;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #3DA8AD;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(85px);
+  -ms-transform: translateX(85px);
+  transform: translateX(85px);
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}
+
   </style>
 
   <title>Please work</title>
@@ -218,14 +299,28 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 
 <div id="upload">
 <h4>Select a file:</h4>
-<form action="/action_page.php">
-  <!--<label for="myfile">Select a file:<br></label>-->
-  <div class="fakeFileButton">
+<!-- Rectangular switch -->
+<label class="switch">
+ <input type="checkbox" id="togBtn" onclick="onOff()">
+ <div class="slider round">
+  <!--ADDED HTML -->
+  <span class="on">Upload</span>
+  <span class="off">Download</span>
+  <!--END-->
+ </div>
+</label>
+<form action="../test2.php" method="post" enctype="multipart/form-data" name="file-form" id="file-form">
+  <!--"../streaming_hars/hars.php"-->
+  
+  <div class="fakeFileButton" onmouseover="getInfo()">
     Browse
     <input type="file" id="myfile" name="myfile"><br><br>
   </div>
-  
-  <input type="submit" id = 'mysubmit' value = "Upload">
+  <input type="hidden" id="isp" name="isp" >
+  <input type="hidden" id="city" name="city" >
+  <input type="hidden" id="lat" name="lat" >
+  <input type="hidden" id="lon" name="lon" >
+  <input type="submit" id = 'mysubmit' value = "File Away">
 </form>
 </ul>  
 
@@ -321,7 +416,30 @@ let heatmapLayer =  new HeatmapOverlay(cfg);
 mymap.addLayer(heatmapLayer);
 heatmapLayer.setData(testData);
      
+function getInfo(){
+                $.getJSON('http://ip-api.com/json', function(data) {
+                //console.log(JSON.stringify(data, null, 2));
+                document.getElementById("isp").value = data.org;
+                document.getElementById("city").value = data.city;
+                document.getElementById("lat").value = data.lat;
+                document.getElementById("lon").value = data.lon;
+            });
+            } 
 
+
+function onOff(){
+  var isChecked=document.getElementById("togBtn").checked;
+  //alert(isChecked);
+
+  if( isChecked == true) {
+    document.getElementById('file-form').action = "../streaming_hars/hars.php";   
+  }
+  else{
+    document.getElementById('file-form').action = "../test2.php";
+    
+     
+  }
+}
         </script>
 
   </body>

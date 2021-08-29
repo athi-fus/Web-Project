@@ -1,4 +1,7 @@
 <?php
+// Always start this first
+session_start();
+
 $servername = "localhost";
 $username = "athinaf";
 $password = "12345#";
@@ -31,8 +34,14 @@ VALUES ('$email','$uname','$pass','$gender')";
 
 
 if (mysqli_query($conn, $sql)) {
-  echo "New record created successfully";
+  //echo "New record created successfully";
+  $_SESSION['user_id'] = $email;
+  $_SESSION['uname'] = $uname;
+  $_SESSION['pwd'] = $pass;
+  header("Location: main_user.php");
+  exit();
 } else {
+  session_destroy();
   echo "Error: " , $sql , "<br>" , mysqli_error($conn);
 }
 mysqli_close($conn);
