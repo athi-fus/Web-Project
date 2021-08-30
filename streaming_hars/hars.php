@@ -1,12 +1,80 @@
 <?php
+// You'd put this code at the top of any "protected" page you create
 
+// Always start this first
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) {
+    // Grab user data from the database using the user_id
+    // Let them access the "logged in only" pages
+} 
+else {
+    // Redirect them to the login page
+    header("Location: login.html");
+}
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
+/*
 $serverName = "localhost";
 $userName = "root";
 $password = "";
 $databaseName = "web2021";
+*/
+
+$serverName = "localhost";
+$userName = "athinaf";
+$password = "12345#";
+$databaseName = 'har_proj';
+
+$redir = 0;
 
 $connection = mysqli_connect($serverName, $userName, $password, $databaseName);
+/*
+if(isset($_POST['submit'])){
+  $filename       = $_FILES['myfile']['name'];  
+  $temp_name  = $_FILES['myfile']['tmp_name'];  
+  if(isset($filename) and !empty($filename)){
+    $location = "../server_folder/";      
+      if(move_uploaded_file($temp_name, $location.$filename)){
+          echo 'File uploaded successfully';
+      }else{
+        echo 'UPLOADING FILE FAILED ';
+      }
+  } else {
+      echo 'You should select a file to upload !!';
+  }
+}
 
+$filename       = $_FILES['myfile']['name'];
+$location = "../server_folder/";
+$filepath = "../server_folder/".$filename;
+*/
+$filename =  $_FILES['myfile']['name'];
+/*echo file_get_contents("test.txt");
+echo file_get_contents($filename);*/
+
+$location = "../server_folder/".$filename;
+
+if (move_uploaded_file($_FILES['myfile']['tmp_name'], $location)){
+  echo '<p> File uploaded successfully</p>';
+}
+else{
+  echo '<b> Error uploading file.</b>';
+}
+
+
+$isp = $_POST['isp'];
+$city = $_POST['city'];
+$lon = $_POST['lon'];
+$lat = $_POST['lat'];
+
+
+echo $isp;
+echo $city;
+echo $lon;
+echo $lat;
+/*ADD THE CITY AND THE COORDINATES*/
 require_once 'vendor/autoload.php';
 
  use \JsonMachine\JsonMachine;
@@ -20,7 +88,7 @@ require_once 'vendor/autoload.php';
 
  
  
- $insertRecordQuery = "INSERT INTO har_file VALUES(null,'user1@email.com','cosmote')";
+ $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."',".$lon.",".$lat." );";
  if(mysqli_query($connection, $insertRecordQuery)){
   //echo "success";
 }
@@ -28,7 +96,7 @@ else{
   echo "error:".mysqli_error($connection);
 }
 
- $result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = 'user1@email.com';");
+ $result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = '".$_SESSION['user_id']."'");
 
 
   while($row = $result->fetch_assoc()) {
@@ -38,10 +106,8 @@ else{
  
  
 
-
-
-
- $entries = JsonMachine::fromFile("techsetupgear.wordpress.com_Archive-21-07-23-21-24-35.har",'/log/entries', new PassThruDecoder);
+/*$entries = JsonMachine::fromFile("techsetupgear.wordpress.com_Archive-21-07-23-21-24-35.har",'/log/entries', new PassThruDecoder);*/
+ $entries = JsonMachine::fromFile($location,'/log/entries', new PassThruDecoder);
  foreach ($entries as $entry){
   $x = 1;
    foreach (JsonMachine::fromString($entry, "") as $data){
@@ -191,11 +257,14 @@ for ($i = 0; $i <= sizeof($res_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$res_head_name[$i]."','".$res_head_value[$i]."', 'response')";
   if(mysqli_query($connection, $insertRecordQuery)){
     //echo "success";
+    $redir = 1;
  }
  else{
     echo "error:".mysqli_error($connection);
+    $redir = 0;
  }
 }
+
 /*
   print_r($req_head_name);
   print_r($req_head_value);
@@ -206,6 +275,13 @@ for ($i = 0; $i <= sizeof($res_head_name)-1; $i++) {
   $req_head_value = array();
   $res_head_name = array();
   $res_head_value = array();
+
+
  }
 
+ 
+ if ($redir == 1) {
+  header("Location: ../user_functionality/main_user.php");
+exit;
+}
 ?>
