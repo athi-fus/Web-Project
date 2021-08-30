@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'dbh.php';
     $isp = '';
     $sql = "SELECT COUNT(DISTINCT provider) FROM har_file";

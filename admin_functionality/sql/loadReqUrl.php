@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'dbh.php';
     $url = array();
     $sql = "SELECT COUNT(DISTINCT req_url) FROM entries";

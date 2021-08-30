@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'dbh.php';
     $users = '';
     $sql = "SELECT COUNT(username) FROM users";

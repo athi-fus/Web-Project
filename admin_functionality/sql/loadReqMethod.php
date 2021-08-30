@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'dbh.php';
     $methods = array();
     $sql = "SELECT req_method,COUNT(*) as number FROM entries GROUP BY req_method";

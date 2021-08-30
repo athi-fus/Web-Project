@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include 'dbh.php';
     $status = array();
     $sql = "SELECT res_status,COUNT(*) as number FROM entries GROUP BY res_status";
