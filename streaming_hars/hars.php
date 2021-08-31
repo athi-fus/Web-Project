@@ -1,4 +1,5 @@
 <?php
+
 // You'd put this code at the top of any "protected" page you create
 
 // Always start this first
@@ -15,19 +16,21 @@ else {
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-/*
+/*--------------------------------
 $serverName = "localhost";
 $userName = "root";
 $password = "";
-$databaseName = "web2021";
-*/
+$databaseName = "webdb";
+-----------------------------------*/
 
 $serverName = "localhost";
 $userName = "athinaf";
 $password = "12345#";
 $databaseName = 'har_proj';
 
+
 $redir = 0;
+
 
 $connection = mysqli_connect($serverName, $userName, $password, $databaseName);
 /*
@@ -50,6 +53,7 @@ $filename       = $_FILES['myfile']['name'];
 $location = "../server_folder/";
 $filepath = "../server_folder/".$filename;
 */
+
 $filename =  $_FILES['myfile']['name'];
 /*echo file_get_contents("test.txt");
 echo file_get_contents($filename);*/
@@ -74,11 +78,13 @@ echo $isp;
 echo $city;
 echo $lon;
 echo $lat;
+
 /*ADD THE CITY AND THE COORDINATES*/
 require_once 'vendor/autoload.php';
 
  use \JsonMachine\JsonMachine;
  use JsonMachine\JsonDecoder\PassThruDecoder;
+ use JsonMachine\JsonDecoder\ExtJsonDecoder;
 
  $req_head_name = array();
  $req_head_value = array();
@@ -87,8 +93,115 @@ require_once 'vendor/autoload.php';
  global $entry_id, $har_id, $method, $startedDateTime, $url, $status, $statusText, $wait, $serverIPAddress;
 
  
+ $objects = JsonMachine::fromFile($location, '/log/entries', new ExtJsonDecoder);
+ foreach($objects as $object){
+     foreach ($object as $key => $value) {
+             if ($key == "pageref") {
+                 unset($object->{$key});
+             }
+             if ($key == "request") {
+                 foreach($value as $val => $thi){
+                     if($val == "bodySize"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "url"){
+                         $object->$key->$val =  parse_url($thi, PHP_URL_HOST);
+                     }
+                     if($val == "httpVersion"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "headers"){
+                         $x = 0;
+                         foreach($thi as $valu => $inn){
+                             if(strcasecmp($inn->{"name"}, 'Host') == 0 or strcasecmp($inn->{"name"}, 'content-type') == 0 or strcasecmp($inn->{"name"}, 'cache-control') == 0 or strcasecmp($inn->{"name"}, 'pragma') == 0 or strcasecmp($inn->{"name"}, 'expires') == 0 or strcasecmp($inn->{"name"}, 'age') == 0 or strcasecmp($inn->{"name"}, 'last-modified') == 0){
+                                 $x++;
+                                 continue;
+                                 
+                             }
+                             else{
+                                 unset($object->$key->$val[$x]);
+                                 $x++;
+                             }
+                
+                         }
+                         
+                     }
+                     if($val == "cookies"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "queryString"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "headersSize"){
+                         unset($object->$key->$val);
+                     }
+                 }
+             }
+             if ($key == "response") {
+                 foreach($value as $val => $thi){
+                     if($val == "httpVersion"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "headers"){
+                      $object->$key->$val = explode(",", $val);
+                         foreach($thi as $valu => $inn){
+                             if(strcasecmp($inn->{"name"}, 'Host') == 0 or strcasecmp($inn->{"name"}, 'content-type') == 0 or strcasecmp($inn->{"name"}, 'cache-control') == 0 or strcasecmp($inn->{"name"}, 'pragma') == 0 or strcasecmp($inn->{"name"}, 'expires') == 0 or strcasecmp($inn->{"name"}, 'age') == 0 or strcasecmp($inn->{"name"}, 'last-modified') == 0){
+                                
+                                 continue;
+                                 
+                             }
+                             else{
+                                 unset($object->$key->$val->$inn);
+                                 
+                             }
+                
+                         }
+                     }
+                     if($val == "cookies"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "content"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "redirectURL"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "headersSize"){
+                         unset($object->$key->$val);
+                     }
+                     if($val == "bodySize"){
+                         unset($object->$key->$val);
+                     }
+                 }
+             }
+             if ($key == "cache") {
+                 unset($object->{$key});
+             }
+             if ($key == "timings") {
+                 foreach($value as $val => $thi){
+                     if($val != "wait"){
+                         unset($object->$key->$val);
+                     }
+                 }
+             }
+             if ($key == "time") {
+                 unset($object->{$key});
+             }
+             if ($key == "_securityState") {
+                 unset($object->{$key});
+             }
+             if ($key == "connection") {
+                 unset($object->{$key});
+             }
  
+ 
+     
+ }
+ }
+ 
+ //AUTO EINAI TO SOSTO
  $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."',".$lon.",".$lat." );";
+ //$insertRecordQuery = "INSERT INTO har_file  VALUES(null,'user@gmail.com','ISP','PATRA',11,22 );";
  if(mysqli_query($connection, $insertRecordQuery)){
   //echo "success";
 }
@@ -98,133 +211,73 @@ else{
 
  $result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = '".$_SESSION['user_id']."'");
 
+ //$result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = 'user@gmail.com'");
 
   while($row = $result->fetch_assoc()) {
    $har_id = $row["MAX(id_har)"];
 
   }
- 
- 
 
-/*$entries = JsonMachine::fromFile("techsetupgear.wordpress.com_Archive-21-07-23-21-24-35.har",'/log/entries', new PassThruDecoder);*/
- $entries = JsonMachine::fromFile($location,'/log/entries', new PassThruDecoder);
- foreach ($entries as $entry){
-  $x = 1;
-   foreach (JsonMachine::fromString($entry, "") as $data){
-    if($x === 2){ //startedDateTime
-      
-      $date = new DateTime($data);
+ ////////////////////////////////////////////////////////////////////////
+
+ foreach($objects as $object){
+  foreach ($object as $key => $value) {
+    if ($key == "startedDateTime") {
+      $date = new DateTime($value);
       $startedDateTime = date_format($date,'Y-m-d H:i:s');
-      //echo $startedDateTime."<br>";
     }
-    if($x === 3){//request
-      $y = 1;
-      foreach ($data as &$value) {
-        if($y === 2){ //method
-          $method = $value;
-          //echo $method."<br>";
-          
+    if ($key == "request") {
+      foreach($value as $val => $thi){
+        if($val == "method"){
+          $method = $thi;
         }
-        if($y === 3){ //url
-          $url = parse_url($value, PHP_URL_HOST);
-          //echo $url."<br>";
-          
+        if($val == "url"){
+          $url = parse_url($thi, PHP_URL_HOST);
         }
-        if ($y === 5){ //headers
-          foreach ($value as &$in) {
-            $z = 1;
-          
-            foreach ($in as &$inn) {
-              if($z === 1){ //name
-                if(strcasecmp($inn, 'host') == 0 or strcasecmp($inn, 'content-type') == 0 or strcasecmp($inn, 'cache-control') == 0 or strcasecmp($inn, 'pragma') == 0 or strcasecmp($inn, 'expires') == 0 or strcasecmp($inn, 'age') == 0 or strcasecmp($inn, 'last-modified') == 0){
-                //echo "name:".$inn."<br>";
-                array_push($req_head_name, $inn); 
-                }
-                else{
-                  break;
-                }
-              }
-              if($z === 2){ //value
-                //echo "value:".$inn."<br>";
-                array_push($req_head_value, $inn); 
-              }
-              $z++;
+        if($val == "headers"){
+
+          foreach($thi as $valu => $inn){
+            if(strcasecmp($inn->{"name"}, 'host') == 0 or strcasecmp($inn->{"name"}, 'content-type') == 0 or strcasecmp($inn->{"name"}, 'cache-control') == 0 or strcasecmp($inn->{"name"}, 'pragma') == 0 or strcasecmp($inn->{"name"}, 'expires') == 0 or strcasecmp($inn->{"name"}, 'age') == 0 or strcasecmp($inn->{"name"}, 'last-modified') == 0){
+                
+            array_push($req_head_name, $inn->{"name"}); 
+            array_push($req_head_value, $inn->{"value"});
+            }
           }
         }
-        }
-        $y++;
       }
     }
-    if($x === 4){//response
-      $y = 1;
-      foreach($data as $value){
-        if($y === 1){ //status
-          $status = $value;
-          //echo $status."<br>";
-          
+    if ($key == "timings") {
+      foreach($value as $val => $thi){
+        if($val == "wait"){
+          $wait = $thi;
         }
-        if($y === 2){ //statusText
-          $statusText = $value;
-          //echo $statusText."<br>";
-          
+    }
+    }
+    if ($key == "serverIPAddress") {
+      $serverIPAddress = $value;
+    }
+
+    if ($key == "response") {
+      foreach($value as $val => $thi){
+        if($val == "status"){
+          $status = $thi;
         }
-        if ($y === 4){ //headers
-          foreach ($value as &$in) {
-            $z = 1;
-            foreach ($in as &$inn) {
-              if($z === 1){ //name
-                if(strcasecmp($inn, 'host') == 0 or strcasecmp($inn, 'content-type') == 0 or strcasecmp($inn, 'cache-control') == 0 or strcasecmp($inn, 'pragma') == 0 or strcasecmp($inn, 'expires') == 0 or strcasecmp($inn, 'age') == 0 or strcasecmp($inn, 'last-modified') == 0){
-                //echo "name:".$inn."<br>";
-                array_push($res_head_name, $inn);
-                }
-                else{
-                  break;
-                }
-              }
-              if($z === 2){ //value
-                //echo "value:".$inn."<br>";
-                array_push($res_head_value, $inn);
-              }
-              $z++;
+        if($val == "statusText"){
+          $statusText = $thi;
+        }
+        if($val == "headers"){
+
+          foreach($thi as $valu => $inn){
+            if(strcasecmp($inn->{"name"}, 'host') == 0 or strcasecmp($inn->{"name"}, 'content-type') == 0 or strcasecmp($inn->{"name"}, 'cache-control') == 0 or strcasecmp($inn->{"name"}, 'pragma') == 0 or strcasecmp($inn->{"name"}, 'expires') == 0 or strcasecmp($inn->{"name"}, 'age') == 0 or strcasecmp($inn->{"name"}, 'last-modified') == 0){
+                
+            array_push($res_head_name, $inn->{"name"}); 
+            array_push($res_head_value, $inn->{"value"});
+            }
           }
         }
-        }
-        $y++;
       }
     }
-    if($x === 6){ //timings
-      $y = 1;
-      foreach($data as &$inside){
-        if($y === 6){ //wait
-          $wait = $inside;
-          //echo $wait."<br>";
-        }
-        
-        $y++;
-      }
-      
-      
-    }
-    if($x === 9){//serverIPAddress
-      $serverIPAddress = $data;
-      //echo $serverIPAddress."<br>"; 
-    }
-    
-    $x++;
-   //print_r($startedDateTime);
-    //$date = new DateTime($data);
-    //$new_data = date_format($date,'Y-m-d H:i:s');
-    /*
-    $insertRecordQuery = "INSERT INTO entries VALUES('".$new_data."')";
-    if(mysqli_query($connection, $insertRecordQuery)){
-       echo "success";
-    }
-    else{
-       echo "error:".mysqli_error($connection);
-    }
-    */
   }
-  
   $insertRecordQuery = "INSERT INTO entries VALUES('".$har_id."',null,'".$startedDateTime."','".$wait."','".$serverIPAddress."','".$method."','".$url."','".$status."','".$statusText."')";
   if(mysqli_query($connection, $insertRecordQuery)){
     //echo "success";
@@ -233,15 +286,14 @@ else{
     echo "error:".mysqli_error($connection);
  }
 
-  $result = $connection->query("SELECT MAX(id_entry) FROM entries WHERE id_har = '".$har_id."';");
+ 
+ $result = $connection->query("SELECT MAX(id_entry) FROM entries WHERE id_har = '".$har_id."';");
 
- 
-  while($row = $result->fetch_assoc()) {
-   $entry_id = $row["MAX(id_entry)"];
-   echo $entry_id;
-  }
- 
- 
+ while($row = $result->fetch_assoc()) {
+  $entry_id = $row["MAX(id_entry)"];
+  echo $entry_id;
+ }
+
  for ($i = 0; $i <= sizeof($req_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$req_head_name[$i]."','".$req_head_value[$i]."', 'request')";
   if(mysqli_query($connection, $insertRecordQuery)){
@@ -258,30 +310,29 @@ for ($i = 0; $i <= sizeof($res_head_name)-1; $i++) {
   if(mysqli_query($connection, $insertRecordQuery)){
     //echo "success";
     $redir = 1;
- }
- else{
+}
+else{
     echo "error:".mysqli_error($connection);
     $redir = 0;
- }
+}
 }
 
-/*
-  print_r($req_head_name);
-  print_r($req_head_value);
-  print_r($res_head_name);
-  print_r($res_head_value);
-*/
+
   $req_head_name = array();
   $req_head_value = array();
   $res_head_name = array();
   $res_head_value = array();
 
-
- }
-
+}
  
+ /////////////////////////////////////////////////////////////////////
+ 
+ 
+
+
  if ($redir == 1) {
   header("Location: ../user_functionality/main_user.php");
 exit;
 }
-?>
+
+ ?>
