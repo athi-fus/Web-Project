@@ -64,16 +64,45 @@
      <div class="content-wrapper">
         <div class="graph-items-wrapper">
             <div class="graph-item-wrapper" >
-                <input type="checkbox" id="all" name="all" value="all">
-                <label for="all">All days</label><br>
-                <input type="checkbox" id="Sunday" name="Sunday" value="1">
-                <label for="Sunday">Sunday</label><br>
-                <input type="checkbox" id="Monday" name="Monday" value="2">
-                <label for="Monday">Monday</label><br>
                 <div class="canvas-item" id="canvas-item">
                     <canvas class="chart" id="myChart2"></canvas>
                 </div>
-            </div>   
+                <div id="content-types" class="content-types">
+                    <h5>Content Types</h5>
+                    <input type="checkbox" id="allCT" name="allCT" value="allCT">
+                    <label for="allCT">All Content-Types &nbsp &nbsp &nbsp</label>
+                </div>
+                <div class="days">
+                    <h5>Days of week</h5>
+                    <input type="checkbox" id="all" name="all" value="all">
+                    <label for="all">All days &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Sunday" name="Sunday" value="1">
+                    <label for="Sunday">Sunday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Monday" name="Monday" value="2">
+                    <label for="Monday">Monday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Tuesday" name="Tuesday" value="3">
+                    <label for="Tuesday">Tuesday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Wednesday" name="Wednesday" value="4">
+                    <label for="Wednesday">Wednesday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Thursday" name="Thursday" value="5">
+                    <label for="Thursday">Thursday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Friday" name="Friday" value="6">
+                    <label for="Friday">Friday &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" id="Suturday" name="Saturday" value="7">
+                    <label for="Saturday">Saturday &nbsp &nbsp &nbsp</label>
+                </div>
+                <div class="req-methods">
+                    <h5>HTTP request methods</h5>
+                    <input type="checkbox" id="allRM" name="allRM" value="allRM">
+                    <label for="allRM">All HTTP request methods &nbsp &nbsp &nbsp</label>
+                </div>
+                <div class="isps">
+                    <h5>ISPs</h5>
+                    <input type="checkbox" id="allISP" name="allISP" value="allISP">
+                    <label for="allISP">All ISPs &nbsp &nbsp &nbsp</label>
+                </div>
+            </div> 
+            <button id="submit" class="submit">Submit Filters</button>  
         </div> 
     </div>
     <script src="js/chartResponseTimes.js"></script>

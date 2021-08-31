@@ -70,16 +70,15 @@ $("#selectReqMethods").click(function(){
     uReq.open("get", "sql/loadReqMethod.php", true);
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
-        const records = [];
-        const methods = [];
-
-        for(var i=0;counter.length;i++){
-           
+        var methods = [];
+        var records = [];
+    
+        for(var i=0; i<counter.length; i++){
             var obj = counter[i];
-            methods.push(obj.req_method);
+            methods.push(obj.reqMethod);
             records.push(obj.number);
 
-           
+
             var output='';
             output += 
                     '<div class="canvas-item">'+
@@ -90,43 +89,42 @@ $("#selectReqMethods").click(function(){
             // document.getElementById("welcomeText").innerHTML = '';
             document.getElementById("canvas-item").innerHTML = output;
             
-        
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: methods,
-                    datasets: [{
-                        data: records,
-                        backgroundColor: 'rgb(194, 153, 255)',
-                        borderWidth: 1,
-                        barThickness: 20,
-                        borderColor: 'rgb(194, 153, 255)',
-                        hoverBorderWidth: 3,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive:false,
-                    plugins:{
-                        legend:{
-                            display : false,
-                        },
-                        title: {
-                            display: true,
-                            text: 'Records per Method',
-                            color: 'rgb(194, 153, 255)'
-                        }
+        }    
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: methods,
+                datasets: [{
+                    data: records,
+                    backgroundColor: 'rgb(194, 153, 255)',
+                    borderWidth: 1,
+                    barThickness: 20,
+                    borderColor: 'rgb(194, 153, 255)',
+                    hoverBorderWidth: 3,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive:false,
+                plugins:{
+                    legend:{
+                        display : false,
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    title: {
+                        display: true,
+                        text: 'Records per Method',
+                        color: 'rgb(194, 153, 255)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-                
-             });  
-        }
+            }
+            
+        });  
     };
     uReq.send();
 });
@@ -139,10 +137,10 @@ $("#selectResponseStatus").click(function(){
     uReq.open("get", "sql/loadResponseStatus.php", true);
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
-        const statuses = [];
-        const records = [];
+        var statuses = [];
+        var records = [];
 
-         for(var i=0;counter.length;i++){
+        for(var i=0; i<counter.length;i++){
             var obj = counter[i];
             statuses.push(obj.res_status);
             records.push(obj.number);
@@ -156,44 +154,43 @@ $("#selectResponseStatus").click(function(){
                 
             // document.getElementById("welcomeText").innerHTML = '';
             document.getElementById("canvas-item").innerHTML = output;
-            
+        }        
         
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: statuses,
-                    datasets: [{
-                        data: records,
-                        backgroundColor: 'rgb(194, 153, 255)',
-                        borderWidth: 1,
-                        barThickness: 20,
-                        borderColor: 'rgb(194, 153, 255)',
-                        hoverBorderWidth: 3,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive:false,
-                    plugins:{
-                        legend:{
-                            display : false,
-                        },
-                        title: {
-                            display: true,
-                            text: 'Records per Status',
-                            color: 'rgb(194, 153, 255)'
-                        } 
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: statuses,
+                datasets: [{
+                    data: records,
+                    backgroundColor: 'rgb(194, 153, 255)',
+                    borderWidth: 1,
+                    barThickness: 20,
+                    borderColor: 'rgb(194, 153, 255)',
+                    hoverBorderWidth: 3,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive:false,
+                plugins:{
+                    legend:{
+                        display : false,
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    title: {
+                        display: true,
+                        text: 'Records per Status',
+                        color: 'rgb(194, 153, 255)'
+                    } 
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-                
-             });  
-        }
+            }
+            
+        });  
     };
     uReq.send();
 });
@@ -321,8 +318,7 @@ $("#selectAge").click(function(){
             
     uReq.open("get", "sql/loadAvgAge.php", true);
     uReq.onload = function() {
-        const counter = JSON.parse(this.responseText);
-        console.log(counter); 
+        const counter = JSON.parse(this.responseText); 
         var contentTypes = [];
         var avgAge = [];
     
