@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     include 'dbh.php';
     $age = array();
     $sql = "SELECT A.value AS ContentType,AVG(B.value) AS AverageAge FROM header A, header B WHERE A.id_entry = B.id_entry AND A.name LIKE 'content-type' AND B.name LIKE 'age' GROUP BY A.value";

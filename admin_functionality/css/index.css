@@ -1,90 +1,4 @@
-/* Master Styles */
-
-body {
-  margin: 0px;
-  /* display: grid; */
-  place-content: center;
-  background-color: #555652;
-  font-family: "Lato", sans-serif;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: #343a40;
-}
-
-/* Nav Styles */
-
-/* .nav-wrapper {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-.text-logo {
-  margin-right: 250px;
-  margin-top: 0px;
-  color: black;
-  text-decoration: none;
-}
-
-.nav-wrapper > div {
-  margin-right: 30px;
-  font-size: 1.2em;
-}*/
-
-.nav-item {
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.5s;
-}
-
-.nav-item a {
-  color: black;
-  text-decoration: none;
-  transition: color 0.5s;
-}
-
-.nav-item:hover {
-  border-bottom: 2px solid black;
-}
-
-.nav-item a:hover {
-  color: rgb(194, 153, 255);
-}
-
-.active {
-  border-bottom: 2px solid black;
-}
-
-.active a {
-  color: rgb(
-    194,
-    153,
-    255
-  ) !important; /*Its important in order to override the default color*/
-}
-
-/* Graph-Styles */
-
-/* .graph-items-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-} */
-
-/* .graph-item-wrapper {
-  position: relative;
-  height: 350px;
-  width: 50%;
-} */
-
-.chart {
-  width: 55%;
-  background: #222;
-  border: 2px solid #555652;
-  margin-top: 5px;
-  margin-left: 340px;
-}
+/* Text Styles */
 
 .text-info-js {
   position: relative;
@@ -110,13 +24,46 @@ body {
 
 .text-info-js::before {
   background: #555652;
-  animation: typewriter 4s steps(64) 1s forwards;
+  animation: typewriter 3s steps(64) 1s forwards;
 }
 
 .text-info-js::after {
   width: 0.125em;
   background: black;
-  animation: typewriter 4s steps(64) 1s forwards, blink 750ms steps(63) infinite;
+  animation: typewriter 3s steps(64) 1s forwards, blink 750ms steps(63) infinite;
+}
+
+.text-info-two {
+  position: relative;
+  width: max-content;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  margin-top: 10px;
+  margin-left: 620px;
+  color: rgb(194, 153, 255);
+  font-style: italic;
+  font-size: 120%;
+}
+
+.text-info-two::before,
+.text-info-two::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-info-two::before {
+  background: #555652;
+  animation: typewriter 2s steps(64) 1s forwards;
+}
+
+.text-info-two::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter 2s steps(64) 1s forwards, blink 750ms steps(63) infinite;
 }
 
 .text-info-age {
@@ -125,7 +72,7 @@ body {
   text-align: center;
   font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
-  margin-left: 345px;
+  margin-left: 480px;
   color: rgb(194, 153, 255);
   font-style: italic;
   font-size: 120%;
@@ -143,17 +90,17 @@ body {
 
 .text-info-age::before {
   background: #555652;
-  animation: typewriter 4s steps(64) 1s forwards;
+  animation: typewriter 3s steps(64) 1s forwards;
 }
 
 .text-info-age::after {
   width: 0.125em;
   background: black;
-  animation: typewriter 4s steps(64) 1s forwards, blink 750ms steps(63) infinite;
+  animation: typewriter 3s steps(64) 1s forwards, blink 750ms steps(63) infinite;
 }
 
 .buttonsLayout {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   margin-left: 220px;
   box-sizing: inherit;
   transition-property: all;
@@ -207,7 +154,7 @@ body {
   font-family: "Share Tech Mono", monospace;
   font-style: italic;
   font-size: 120%;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 3px;
   margin-left: 400px;
   color: rgb(194, 153, 255);

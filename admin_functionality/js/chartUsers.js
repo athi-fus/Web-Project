@@ -6,13 +6,12 @@ $("#selectUsers").click(function(){
     uReq.open("get", "sql/loadUsers.php", true);
     uReq.onload = function() {
         const counter = this.responseText;
-        console.log(counter); 
         var output='';
         
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info-js">Records of registered users in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of registered users in database are: '+ counter + '.</div>'+
                 '</div>';
             
         // document.getElementById("welcomeText").innerHTML = '';
@@ -24,7 +23,6 @@ $("#selectUsers").click(function(){
             data: {
                 labels: ['Users'],
                 datasets: [{
-                    label: 'Records of registered users',
                     data: [counter],
                     backgroundColor: 'rgb(194, 153, 255)',
                     borderWidth: 1,
@@ -38,14 +36,12 @@ $("#selectUsers").click(function(){
                 responsive:false,
                 plugins:{
                     legend:{
-                        labels:{
-                            color: 'rgb(194, 153, 255)',
-                            font:{
-                                size:12,
-                                family: 'Lato',
-                                weight: 'bold'
-                            }
-                        }
+                        display : false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Records of registered users',
+                        color: 'rgb(194, 153, 255)'
                     }
                 },
                 scales: {
@@ -74,16 +70,21 @@ $("#selectReqMethods").click(function(){
     uReq.open("get", "sql/loadReqMethod.php", true);
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
-        // const counter = this.responseText;
-        console.log(counter); 
-        
-        for(var i in counter){
+        const records = [];
+        const methods = [];
+
+        for(var i=0;counter.length;i++){
+           
+            var obj = counter[i];
+            methods.push(obj.req_method);
+            records.push(obj.number);
+
+           
             var output='';
             output += 
                     '<div class="canvas-item">'+
                         '<canvas class="chart" id="myChart"></canvas>'+
-                        '<div class="text-info-js">Records per Method: '+ counter[0].req_method +' in database are: '+ counter[0].number + '</div>'+
-                        '<div class="text-info-js">Records per Method: '+ counter[1].req_method +' in database are: '+ counter[1].number + '</div>'+
+                        '<div class="text-info-two">Records per Methods: <br>'+ methods +'<br> in database are: <br>'+ records + '.</div>'+
                     '</div>';
                 
             // document.getElementById("welcomeText").innerHTML = '';
@@ -94,14 +95,13 @@ $("#selectReqMethods").click(function(){
             const myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: [counter[0].req_method,counter[1].req_method],
+                    labels: methods,
                     datasets: [{
-                        label: 'Records per Method',
-                        data: [counter[0].number,counter[1].number],
-                        backgroundColor: ['rgb(194, 153, 255)', 'rgb(194, 153, 255)' ],
+                        data: records,
+                        backgroundColor: 'rgb(194, 153, 255)',
                         borderWidth: 1,
                         barThickness: 20,
-                        borderColor: ['rgb(194, 153, 255)', 'rgb(194, 153, 255)' ],
+                        borderColor: 'rgb(194, 153, 255)',
                         hoverBorderWidth: 3,
                         borderWidth: 1
                     }]
@@ -110,14 +110,12 @@ $("#selectReqMethods").click(function(){
                     responsive:false,
                     plugins:{
                         legend:{
-                            labels:{
-                                color: 'rgb(194, 153, 255)',
-                                font:{
-                                    size:12,
-                                    family: 'Lato',
-                                    weight: 'bold'
-                                }
-                            }
+                            display : false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Records per Method',
+                            color: 'rgb(194, 153, 255)'
                         }
                     },
                     scales: {
@@ -141,17 +139,19 @@ $("#selectResponseStatus").click(function(){
     uReq.open("get", "sql/loadResponseStatus.php", true);
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
-        console.log(counter); 
-        
-         for(var i in counter){
+        const statuses = [];
+        const records = [];
+
+         for(var i=0;counter.length;i++){
+            var obj = counter[i];
+            statuses.push(obj.res_status);
+            records.push(obj.number);
+
             var output='';
             output += 
                     '<div class="canvas-item">'+
                         '<canvas class="chart" id="myChart"></canvas>'+
-                        '<div class="text-info-js">Records per Status: '+ counter[0].res_status +' in database are: '+ counter[0].number + '</div>'+
-                        '<div class="text-info-js">Records per Status: '+ counter[1].res_status +' in database are: '+ counter[1].number + '</div>'+
-                        '<div class="text-info-js">Records per Status: '+ counter[2].res_status +' in database are: '+ counter[2].number + '</div>'+
-                        '<div class="text-info-js">Records per Status: '+ counter[3].res_status +' in database are: '+ counter[3].number + '</div>'+
+                        '<div class="text-info-two">Records per Statuses: <br>'+ statuses +'<br> in database are: <br>'+ records + '.</div>'+
                     '</div>';
                 
             // document.getElementById("welcomeText").innerHTML = '';
@@ -162,14 +162,13 @@ $("#selectResponseStatus").click(function(){
             const myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: [counter[0].res_status,counter[1].res_status,counter[2].res_status,counter[3].res_status],
+                    labels: statuses,
                     datasets: [{
-                        label: 'Records per Method',
-                        data: [counter[0].number,counter[1].number,counter[2].number,counter[3].number],
-                        backgroundColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
+                        data: records,
+                        backgroundColor: 'rgb(194, 153, 255)',
                         borderWidth: 1,
                         barThickness: 20,
-                        borderColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
+                        borderColor: 'rgb(194, 153, 255)',
                         hoverBorderWidth: 3,
                         borderWidth: 1
                     }]
@@ -178,15 +177,13 @@ $("#selectResponseStatus").click(function(){
                     responsive:false,
                     plugins:{
                         legend:{
-                            labels:{
-                                color: 'rgb(194, 153, 255)',
-                                font:{
-                                    size:12,
-                                    family: 'Lato',
-                                    weight: 'bold'
-                                }
-                            }
-                        }
+                            display : false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Records per Status',
+                            color: 'rgb(194, 153, 255)'
+                        } 
                     },
                     scales: {
                         y: {
@@ -209,13 +206,12 @@ $("#selectDomains").click(function(){
     uReq.open("get", "sql/loadReqUrl.php", true);
     uReq.onload = function() {
         const counter = this.responseText;
-        console.log(counter); 
         var output='';
         
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info-js">Records of unique domains in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of unique domains in database are: '+ counter + '.</div>'+
                 '</div>';
             
         // document.getElementById("welcomeText").innerHTML = '';
@@ -227,7 +223,6 @@ $("#selectDomains").click(function(){
             data: {
                 labels: ['Unique Domains'],
                 datasets: [{
-                    label: 'Records of unique domains',
                     data: [counter],
                     backgroundColor: 'rgb(194, 153, 255)',
                     borderWidth: 1,
@@ -241,15 +236,13 @@ $("#selectDomains").click(function(){
                 responsive:false,
                 plugins:{
                     legend:{
-                        labels:{
-                            color: 'rgb(194, 153, 255)',
-                            font:{
-                                size:12,
-                                family: 'Lato',
-                                weight: 'bold'
-                            }
-                        }
-                    }
+                        display : false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Records of unique domains in database',
+                        color: 'rgb(194, 153, 255)'
+                    } 
                 },
                 scales: {
                     y: {
@@ -271,13 +264,12 @@ $("#selectISP").click(function(){
     uReq.open("get", "sql/loadISP.php", true);
     uReq.onload = function() {
         const counter = this.responseText;
-        console.log(counter); 
         var output='';
         
         output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info-js">Records of unique ISPs in database are: '+ counter + '</div>'+
+                    '<div class="text-info-js">Records of unique ISPs in database are: '+ counter + '.</div>'+
                 '</div>';
             
         // document.getElementById("welcomeText").innerHTML = '';
@@ -289,7 +281,6 @@ $("#selectISP").click(function(){
             data: {
                 labels: ['Unique ISPs'],
                 datasets: [{
-                    label: 'Records of unique ISPs',
                     data: [counter],
                     backgroundColor: 'rgb(194, 153, 255)',
                     borderWidth: 1,
@@ -303,15 +294,13 @@ $("#selectISP").click(function(){
                 responsive:false,
                 plugins:{
                     legend:{
-                        labels:{
-                            color: 'rgb(194, 153, 255)',
-                            font:{
-                                size:12,
-                                family: 'Lato',
-                                weight: 'bold'
-                            }
-                        }
-                    }
+                        display : false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Records of unique ISPs in database',
+                        color: 'rgb(194, 153, 255)'
+                    } 
                 },
                 scales: {
                     y: {
@@ -334,61 +323,62 @@ $("#selectAge").click(function(){
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
         console.log(counter); 
-        
-         for(var i in counter){
+        var contentTypes = [];
+        var avgAge = [];
+    
+        for(var i=0;i<counter.length;i++){
+            var obj = counter[i];
+            contentTypes.push(obj.ContentType);
+            avgAge.push(obj.AverageAge);
+
             var output='';
             output += 
                 '<div class="canvas-item">'+
                     '<canvas class="chart" id="myChart"></canvas>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[0].ContentType +' in database is: '+ counter[0].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[1].ContentType +' in database is: '+ counter[1].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[2].ContentType +' in database is: '+ counter[2].AverageAge + '</div>'+
-                    '<div class="text-info-age">Average age per Content-Type: '+ counter[3].ContentType +' in database is: '+ counter[3].AverageAge + '</div>'+
+                    '<div class="text-info-age">Average age per Content-Type: <br>'+ contentTypes +'<br> in database is: <br>'+ avgAge + '.</div>'+
                 '</div>';
                 
             // document.getElementById("welcomeText").innerHTML = '';
             document.getElementById("canvas-item").innerHTML = output;
             
-        
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [counter[0].ContentType,counter[1].ContentType,counter[2].ContentType,counter[3].ContentType],
-                    datasets: [{
-                        label: 'Average Age per Content-type',
-                        data: [counter[0].AverageAge,counter[1].AverageAge,counter[2].AverageAge,counter[3].AverageAge],
-                        backgroundColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
-                        borderWidth: 1,
-                        barThickness: 20,
-                        borderColor: ['rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)','rgb(194, 153, 255)'],
-                        hoverBorderWidth: 3,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive:false,
-                    plugins:{
-                        legend:{
-                            labels:{
-                                color: 'rgb(194, 153, 255)',
-                                font:{
-                                    size:12,
-                                    family: 'Lato',
-                                    weight: 'bold'
-                                }
-                            }
-                        }
+            
+        }
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: contentTypes,
+                datasets: [{
+                    data: avgAge,
+                    backgroundColor: 'rgb(194, 153, 255)',
+                    borderWidth: 1,
+                    barThickness: 20,
+                    borderColor: 'rgb(194, 153, 255)',
+                    hoverBorderWidth: 3,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive:false,
+                plugins:{
+                    legend:{
+                        display : false,
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                    title: {
+                        display: true,
+                        text: 'Average age per Content-Type',
+                        color: 'rgb(194, 153, 255)'
+                    }    
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
-                
-             });  
-        }
+            }
+            
+            });  
+        
     };
     uReq.send();
 });
