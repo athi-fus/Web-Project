@@ -1,4 +1,3 @@
-
 CREATE TABLE users (
     email VARCHAR(100) NOT NULL,
     username VARCHAR(50) NOT NULL,
@@ -9,7 +8,10 @@ CREATE TABLE users (
 CREATE TABLE har_file (
     id_har int NOT NULL AUTO_INCREMENT,
     user_email VARCHAR(100) NOT NULL,
-    provider VARCHAR(100),
+    isprovider VARCHAR(200),
+	city VARCHAR(50),
+	lon FLOAT,
+	lat FLOAT,
     PRIMARY KEY (id_har,user_email),
     FOREIGN KEY (user_email) REFERENCES users(email)
 );
@@ -38,8 +40,3 @@ CREATE TABLE header (
     PRIMARY KEY (id_header,id_entry),
     FOREIGN KEY (id_entry) REFERENCES entries(id_entry)
 );
-
-
-
-
-
