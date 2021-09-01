@@ -26,20 +26,17 @@ foreach($objects as $object){
                         unset($object->$key->$val);
                     }
                     if($val == "headers"){
-                        $x = 0;
+                        $object->$key->$val = explode(",", $val);
                         foreach($thi as $valu => $inn){
                             if(strcasecmp($inn->{"name"}, 'Host') == 0 or strcasecmp($inn->{"name"}, 'content-type') == 0 or strcasecmp($inn->{"name"}, 'cache-control') == 0 or strcasecmp($inn->{"name"}, 'pragma') == 0 or strcasecmp($inn->{"name"}, 'expires') == 0 or strcasecmp($inn->{"name"}, 'age') == 0 or strcasecmp($inn->{"name"}, 'last-modified') == 0){
-                                $x++;
                                 continue;
                                 
                             }
                             else{
-                                unset($object->$key->$val[$x]);
-                                $x++;
+                                unset($object->$key->$val->$inn);
                             }
                
                         }
-                        
                     }
                     if($val == "cookies"){
                         unset($object->$key->$val);
@@ -92,6 +89,13 @@ foreach($objects as $object){
             }
             if ($key == "cache") {
                 unset($object->{$key});
+            }
+            if ($key == "timings") {
+                foreach($value as $val => $thi){
+                    if($val != "wait"){
+                        unset($object->$key->$val);
+                    }
+                }
             }
             if ($key == "time") {
                 unset($object->{$key});
