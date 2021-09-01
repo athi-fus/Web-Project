@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="viewport" content="width=device-width, initial-scale=1.0">
     <title>Its all about HAR</title>
 
     <!-- Fonts -->
@@ -50,7 +50,7 @@
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Me</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="changeuname.php">Change Username</a>
+                        <a class="dropdown-item" href="changeuclass.php">Change Userclass</a>
                     <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="changepass.php">Change Password</a>
                     <div class="dropdown-divider"></div>
@@ -69,43 +69,53 @@
                 </div>
                 <div id="content-types" class="content-types">
                     <h5>Content Types</h5>
-                    <input type="checkbox" id="allCT" name="allCT" value="allCT">
+                    <input type="checkbox" required id="allCT" class="ct-box" value="allCT">
                     <label for="allCT">All Content-Types &nbsp &nbsp &nbsp</label>
                 </div>
-                <div class="days">
+                <div id="days" class="days">
                     <h5>Days of week</h5>
-                    <input type="checkbox" id="all" name="all" value="all">
-                    <label for="all">All days &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Sunday" name="Sunday" value="1">
+                    <input type="checkbox" required id="allDays" class="days-box" value="allDays">
+                    <label for="allDays">All days &nbsp &nbsp &nbsp</label>
+                    <input type="checkbox" required id="Sunday" class="days-box" value="1">
                     <label for="Sunday">Sunday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Monday" name="Monday" value="2">
+                    <input type="checkbox" required id="Monday" class="days-box" value="2">
                     <label for="Monday">Monday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Tuesday" name="Tuesday" value="3">
+                    <input type="checkbox" required id="Tuesday" class="days-box" value="3">
                     <label for="Tuesday">Tuesday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Wednesday" name="Wednesday" value="4">
+                    <input type="checkbox" required id="Wednesday" class="days-box" value="4">
                     <label for="Wednesday">Wednesday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Thursday" name="Thursday" value="5">
+                    <input type="checkbox" required id="Thursday" class="days-box" value="5">
                     <label for="Thursday">Thursday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Friday" name="Friday" value="6">
+                    <input type="checkbox" required id="Friday" class="days-box" value="6">
                     <label for="Friday">Friday &nbsp &nbsp &nbsp</label>
-                    <input type="checkbox" id="Suturday" name="Saturday" value="7">
+                    <input type="checkbox" required id="Suturday" class="days-box" value="7">
                     <label for="Saturday">Saturday &nbsp &nbsp &nbsp</label>
                 </div>
-                <div class="req-methods">
+                <div id="req-methods" class="req-methods">
                     <h5>HTTP request methods</h5>
-                    <input type="checkbox" id="allRM" name="allRM" value="allRM">
+                    <input type="checkbox" required id="allRM" class="rm-box" value="allRM">
                     <label for="allRM">All HTTP request methods &nbsp &nbsp &nbsp</label>
                 </div>
-                <div class="isps">
+                <div id="isps" class="isps">
                     <h5>ISPs</h5>
-                    <input type="checkbox" id="allISP" name="allISP" value="allISP">
+                    <input type="checkbox" required id="allISP" class="isp-box" value="allISP">
                     <label for="allISP">All ISPs &nbsp &nbsp &nbsp</label>
                 </div>
             </div> 
-            <button id="submit" class="submit">Submit Filters</button>  
+            <button id="submit" class="submit">Submit Filters</button>
         </div> 
     </div>
+    <script src="js/loadCheckboxes.js"></script>
     <script src="js/chartResponseTimes.js"></script>
 </body>
 
 </html>
+<!-- 
+ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _       
+|             Creators:                      |  
+|Athina Fouseki, Github:athi-fus             |  
+|Katerina Dervou, Github: katderv            |  
+|Konstantinos Kaskantiris, Github:KwstasKaska|
+|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |  
+                    
+ -->
