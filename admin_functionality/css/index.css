@@ -1,4 +1,11 @@
 /* Text Styles */
+.chart {
+  width: 55%;
+  background: #343a40;
+  border: 2px solid #555652;
+  margin-top: 5px;
+  margin-left: 340px;
+}
 
 .text-info-js {
   position: relative;
@@ -7,7 +14,21 @@
   font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
   margin-left: 500px;
-  color: rgb(194, 153, 255);
+  background: #616161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -mo-text-fill-color: transparent;
   font-style: italic;
   font-size: 120%;
 }
@@ -23,7 +44,7 @@
 }
 
 .text-info-js::before {
-  background: #555652;
+  background: #000000;
   animation: typewriter 3s steps(64) 1s forwards;
 }
 
@@ -40,7 +61,21 @@
   font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
   margin-left: 620px;
-  color: rgb(194, 153, 255);
+  background: #616161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -mo-text-fill-color: transparent;
   font-style: italic;
   font-size: 120%;
 }
@@ -56,7 +91,7 @@
 }
 
 .text-info-two::before {
-  background: #555652;
+  background: #000000;
   animation: typewriter 2s steps(64) 1s forwards;
 }
 
@@ -72,8 +107,22 @@
   text-align: center;
   font-family: "Share Tech Mono", monospace;
   margin-top: 10px;
-  margin-left: 480px;
-  color: rgb(194, 153, 255);
+  margin-left: 520px;
+  background: #616161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -mo-text-fill-color: transparent;
   font-style: italic;
   font-size: 120%;
 }
@@ -89,7 +138,7 @@
 }
 
 .text-info-age::before {
-  background: #555652;
+  background: #000000;
   animation: typewriter 3s steps(64) 1s forwards;
 }
 
@@ -108,46 +157,6 @@
   transition-timing-function: ease;
 }
 
-.selectButton {
-  position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
-  color: rgb(194, 153, 255);
-  background-color: #343a40;
-  font-size: 110%;
-  border-radius: 4px;
-  border: none;
-  transition: ease-out 0.3s;
-  outline: none;
-  border: 2px solid rgb(194, 153, 255);
-  z-index: 1;
-}
-
-.selectButton:hover {
-  color: #343a40;
-  cursor: pointer;
-}
-
-.selectButton::before {
-  transition: 0.5s all ease;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  opacity: 0;
-  content: "";
-  background-color: rgb(194, 153, 255);
-}
-
-.selectButton:hover::before {
-  transition: 0.5s all ease;
-  left: 0;
-  right: 0;
-  opacity: 1;
-  z-index: -1;
-}
-
 .welcomeText {
   position: relative;
   width: max-content;
@@ -157,7 +166,21 @@
   margin-top: 10px;
   margin-bottom: 3px;
   margin-left: 400px;
-  color: rgb(194, 153, 255);
+  background: #616161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9bc5c3,
+    #616161
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -mo-text-fill-color: transparent;
 }
 
 .welcomeText::before,
@@ -171,7 +194,7 @@
 }
 
 .welcomeText::before {
-  background: #555652;
+  background: #000000;
   animation: typewriter 4s steps(63) 1s forwards;
 }
 

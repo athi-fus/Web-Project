@@ -24,10 +24,10 @@ $("#selectUsers").click(function(){
                 labels: ['Users'],
                 datasets: [{
                     data: [counter],
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -41,7 +41,7 @@ $("#selectUsers").click(function(){
                     title: {
                         display: true,
                         text: 'Records of registered users',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     }
                 },
                 scales: {
@@ -97,10 +97,10 @@ $("#selectReqMethods").click(function(){
                 labels: methods,
                 datasets: [{
                     data: records,
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -114,7 +114,7 @@ $("#selectReqMethods").click(function(){
                     title: {
                         display: true,
                         text: 'Records per Method',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     }
                 },
                 scales: {
@@ -163,10 +163,10 @@ $("#selectResponseStatus").click(function(){
                 labels: statuses,
                 datasets: [{
                     data: records,
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -180,7 +180,7 @@ $("#selectResponseStatus").click(function(){
                     title: {
                         display: true,
                         text: 'Records per Status',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     } 
                 },
                 scales: {
@@ -221,10 +221,10 @@ $("#selectDomains").click(function(){
                 labels: ['Unique Domains'],
                 datasets: [{
                     data: [counter],
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -238,7 +238,7 @@ $("#selectDomains").click(function(){
                     title: {
                         display: true,
                         text: 'Records of unique domains in database',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     } 
                 },
                 scales: {
@@ -279,10 +279,10 @@ $("#selectISP").click(function(){
                 labels: ['Unique ISPs'],
                 datasets: [{
                     data: [counter],
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -296,7 +296,7 @@ $("#selectISP").click(function(){
                     title: {
                         display: true,
                         text: 'Records of unique ISPs in database',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     } 
                 },
                 scales: {
@@ -346,10 +346,10 @@ $("#selectAge").click(function(){
                 labels: contentTypes,
                 datasets: [{
                     data: avgAge,
-                    backgroundColor: 'rgb(194, 153, 255)',
+                    backgroundColor:'#9bc5c3',
                     borderWidth: 1,
                     barThickness: 20,
-                    borderColor: 'rgb(194, 153, 255)',
+                    borderColor:'#9bc5c3',
                     hoverBorderWidth: 3,
                     borderWidth: 1
                 }]
@@ -363,7 +363,7 @@ $("#selectAge").click(function(){
                     title: {
                         display: true,
                         text: 'Average age per Content-Type',
-                        color: 'rgb(194, 153, 255)'
+                        color:'#9bc5c3'
                     }    
                 },
                 scales: {

@@ -8,7 +8,7 @@
         uReq.onload = function() {
             const counter = JSON.parse(this.responseText);
             for(var i in counter){
-                $(".content-types").append('<input type="checkbox" required id="'+ counter[i].ContentType + '" class="ct-box" value="'+ counter[i].ContentType +'">').append('<label  for="'+ counter[i].ContentType + '">'+ counter[i].ContentType +'&nbsp &nbsp &nbsp'+ '</label>')
+                $(".ct-wrapper").append('<div class="ct-checkbox-wrapper"><input type="checkbox" required id="'+ counter[i].ContentType + '" class="ct-box" value="'+ counter[i].ContentType +'"><label  for="'+ counter[i].ContentType + '">'+ '&nbsp &nbsp'+ counter[i].ContentType + '</label></div>');
             }
         };
         uReq.send();
@@ -23,7 +23,7 @@
         uReq.onload = function() {
             const counter = JSON.parse(this.responseText);
             for(var i in counter){
-                $(".req-methods").append('<input type="checkbox" required id="'+ counter[i].req_method + '" class="rm-box" value="'+ counter[i].req_method +'">').append('<label  for="'+ counter[i].req_method + '">'+ counter[i].req_method +'&nbsp &nbsp &nbsp'+ '</label>')
+                $(".rm-wrapper").append('<div class="rm-checkbox-wrapper"><input type="checkbox" required id="'+ counter[i].req_method + '" class="rm-box" value="'+ counter[i].req_method +'"><label  for="'+ counter[i].req_method + '">'+ '&nbsp &nbsp'+ counter[i].req_method + '</label></div>');
             }
         };
         uReq.send();
@@ -38,7 +38,7 @@
         uReq.onload = function() {
             const counter = JSON.parse(this.responseText);
             for(var i in counter){
-                $(".isps").append('<input type="checkbox" required id="'+ counter[i].provider + '" class="isp-box" value="'+ counter[i].provider +'">').append('<label  for="'+ counter[i].provider + '">'+ counter[i].provider +'&nbsp &nbsp &nbsp'+ '</label>')
+                $(".isp-wrapper").append('<div class="isp-checkbox-wrapper"><input type="checkbox" required id="'+ counter[i].provider + '" class="isp-box" value="'+ counter[i].provider +'"><label  for="'+ counter[i].provider + '">'+ '&nbsp &nbsp'+ counter[i].provider + '</label> </div>');
             }
         };
         uReq.send();

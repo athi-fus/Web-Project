@@ -15,7 +15,7 @@ $("#submit").click(function(){
         for(var k=1; k<ct_box.length; k++){
             if(ct_box[k].checked == true){
                 content_types.push(ct_box[k].value);
-            }else if(!(checked = $(".content-types > input[type=checkbox]:checked").length)){
+            }else if(!(checked = $(".ct-checkbox-wrapper > input[type=checkbox]:checked").length)){
                 alert("You must check at least one checkbox for Content Types.");
                 return false;
             }  
@@ -25,7 +25,7 @@ $("#submit").click(function(){
         for(var k=1; k<days_box.length; k++){
             if(days_box[k].checked == true){
                 days.push(days_box[k].value);
-            }else if(!(checked = $(".days > input[type=checkbox]:checked").length)){
+            }else if(!(checked = $(".days-checkbox-wrapper > input[type=checkbox]:checked").length)){
                 alert("You must check at least one checkbox for Days of week.");
                 return false;
             }
@@ -35,7 +35,7 @@ $("#submit").click(function(){
         for(var k=1; k<rm_box.length; k++){
             if(rm_box[k].checked == true){
                 req_methods.push(rm_box[k].value);
-            }else if(!(checked = $(".req-methods > input[type=checkbox]:checked").length)){
+            }else if(!(checked = $(".rm-checkbox-wrapper > input[type=checkbox]:checked").length)){
                 alert("You must check at least one checkbox for HTTP request methods.");
                 return false;
             }
@@ -45,7 +45,7 @@ $("#submit").click(function(){
         for(var k=1; k<isp_box.length; k++){
             if(isp_box[k].checked == true){
                 isps.push(isp_box[k].value);
-            }else if(!(checked = $(".isps > input[type=checkbox]:checked").length)){
+            }else if(!(checked = $(".isp-checkbox-wrapper > input[type=checkbox]:checked").length)){
                 alert("You must check at least one checkbox for ISPs.");
                 return false;
             } 
@@ -105,7 +105,7 @@ $("#submit").click(function(){
                             labels: hourslabel,
                             datasets: [{
                                 data: waitData,
-                                backgroundColor: 'rgb(194, 153, 255)',
+                                backgroundColor: '#9bc5c3',
                                 borderWidth: 1,
                                 barThickness: 20,
                                 hoverBorderWidth: 3,
@@ -121,7 +121,7 @@ $("#submit").click(function(){
                                 title: {
                                         display: true,
                                         text: 'Average Response Time per Hour',
-                                        color: 'rgb(194, 153, 255)'
+                                        color: '#9bc5c3'
                                     }
                             },
                             scales: {
