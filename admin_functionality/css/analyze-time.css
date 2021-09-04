@@ -35,7 +35,7 @@
 }
 
 .welcomeText::before {
-  background: #000000;
+  background: #161616;
   animation: typewriter 4s steps(63) 1s forwards;
 }
 
