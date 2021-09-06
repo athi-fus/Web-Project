@@ -3,10 +3,16 @@
 session_start();
 
 # create database connection
+/*
 $servername = "localhost";
 $username = "athinaf";
 $password = "12345#";
 $dbname = 'har_proj';
+*/
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webdb";
 
 $connect = mysqli_connect($servername, $username, $password, $dbname);
 

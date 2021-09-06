@@ -33,10 +33,11 @@ else {
       padding: 1px;
       margin-top: 5px;
       padding-left: 10px;
+      padding-right: 10px;
       padding-bottom: 10px;
       border-radius: 3%;
       position: absolute;
-      top: 250px;
+      top: 240px;
       left: 10%;
     }
 
@@ -45,7 +46,7 @@ else {
       background-color: rgba(240, 240, 240, 0.8);
       font-family: Arial, Helvetica, sans-serif;
       display: block;
-      width: 300px;
+      width: 220px;
       padding: 1px;
       margin-top: 5px;
       padding-left: 10px;
@@ -230,6 +231,23 @@ input:checked + .slider .off
 .slider.round:before {
   border-radius: 50%;}
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+table, td, th {  
+  border: 1px solid black;
+  text-align: left;
+  font-size: 15px;
+  align-self: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+}
+
   </style>
 
   <title>Please work</title>
@@ -289,13 +307,20 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 ?>
 
 <div id="userStats">
-<h3>My stats:</h3>
-<ul>
-  <li>Date of latest upload:</li>
-  <li>Total of uploads:</li>
-</ul>  
-
+  <h3>My stats:</h3>
+    <table>
+      <tr>
+        <th>Latest Upload</th>
+        <th>Num of Records</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Griffin</td>
+      </tr>
+    </table>
 </div>
+
+<script src="basic_stats.js"></script>
 
 <div id="upload">
 <h4>Select a file:</h4>
@@ -441,6 +466,8 @@ function onOff(){
   }
 }
         </script>
+
+ 
 
   </body>
 </html>

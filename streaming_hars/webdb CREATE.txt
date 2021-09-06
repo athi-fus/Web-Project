@@ -1,19 +1,20 @@
-CREATE TABLE users (
-    email VARCHAR(100) NOT NULL,
-    username VARCHAR(50) NOT NULL,
+CREATE TABLE user (
+    email VARCHAR(50) NOT NULL,
+    username VARCHAR(30) NOT NULL,
     password VARCHAR(50) NOT NULL,
+    gender ENUM('male', 'female', 'nonbinary')
     PRIMARY KEY (email)
 );
 
 CREATE TABLE har_file (
     id_har int NOT NULL AUTO_INCREMENT,
-    user_email VARCHAR(100) NOT NULL,
+    user_email VARCHAR(50) NOT NULL,
     isprovider VARCHAR(200),
 	city VARCHAR(50),
 	lon FLOAT,
 	lat FLOAT,
     PRIMARY KEY (id_har,user_email),
-    FOREIGN KEY (user_email) REFERENCES users(email)
+    FOREIGN KEY (user_email) REFERENCES user(email)
 );
 
 CREATE TABLE entries (
@@ -22,6 +23,8 @@ CREATE TABLE entries (
     startedDateTime TIMESTAMP,
     wait int,
     serverIPAddress VARCHAR(100),
+	lon FLOAT,
+	lat FLOAT,
     req_method VARCHAR(100),
     req_url TEXT,
     res_status int,

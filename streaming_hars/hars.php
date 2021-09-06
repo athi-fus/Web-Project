@@ -16,17 +16,18 @@ else {
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-/*--------------------------------
+/*
 $serverName = "localhost";
 $userName = "root";
 $password = "";
 $databaseName = "webdb";
------------------------------------*/
+*/
 
 $serverName = "localhost";
 $userName = "athinaf";
 $password = "12345#";
 $databaseName = 'har_proj';
+
 
 
 $redir = 0;
@@ -90,7 +91,7 @@ require_once 'vendor/autoload.php';
  $req_head_value = array();
  $res_head_name = array();
  $res_head_value = array();
- global $entry_id, $har_id, $method, $startedDateTime, $url, $status, $statusText, $wait, $serverIPAddress;
+ global $entry_id, $har_id, $method, $startedDateTime, $url, $status, $statusText, $wait, $serverIPAddress,$server_lon, $server_lat;
 
  
  $objects = JsonMachine::fromFile($location, '/log/entries', new ExtJsonDecoder);
@@ -200,10 +201,10 @@ require_once 'vendor/autoload.php';
  }
  
  //AUTO EINAI TO SOSTO
- $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."',".$lon.",".$lat." );";
+ $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."','".$lon."','".$lat."' );";
  //$insertRecordQuery = "INSERT INTO har_file  VALUES(null,'user@gmail.com','ISP','PATRA',11,22 );";
  if(mysqli_query($connection, $insertRecordQuery)){
-  //echo "success";
+  echo "success";
 }
 else{
   echo "error:".mysqli_error($connection);
@@ -255,6 +256,10 @@ else{
     }
     if ($key == "serverIPAddress") {
       $serverIPAddress = $value;
+      $response = file_get_contents('https://freegeoip.app/json/'.$value);
+      $data = json_decode($response);
+      $server_lat = $data->latitude;
+      $server_lon = $data->longitude;
     }
 
     if ($key == "response") {
@@ -278,7 +283,7 @@ else{
       }
     }
   }
-  $insertRecordQuery = "INSERT INTO entries VALUES('".$har_id."',null,'".$startedDateTime."','".$wait."','".$serverIPAddress."','".$method."','".$url."','".$status."','".$statusText."')";
+  $insertRecordQuery = "INSERT INTO entries VALUES('".$har_id."',null,'".$startedDateTime."','".$wait."','".$serverIPAddress."',".$server_lon.",".$server_lat.",'".$method."','".$url."','".$status."','".$statusText."');";
   if(mysqli_query($connection, $insertRecordQuery)){
     //echo "success";
  }
