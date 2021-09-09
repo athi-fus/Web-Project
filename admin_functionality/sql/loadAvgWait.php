@@ -15,7 +15,7 @@
     INNER JOIN har_file hf  ON e.id_har = hf.id_har
     WHERE hr.name LIKE 'content-type' 
     AND hr.value IN $content_types
-    AND    DAYOFWEEK(e.StartedDateTime) IN $days
+    AND DAYOFWEEK(e.StartedDateTime) IN $days
     AND e.req_method IN $req_methods
     AND hf.provider IN $isps
     GROUP BY HOUR(e.StartedDateTime)";

@@ -15,6 +15,7 @@
     <!-- Css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/analyze-header.css">
     
     <!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -58,6 +59,33 @@
             </ul> 
         </div>
     </nav>
+
+    <div id="content-types" class="content-types">
+        <h5>Content Types</h5>
+        <div class="ct-wrapper">
+            <div class="ct-checkbox-wrapper">
+                <input type="checkbox" required id="allCT" class="ct-box" value="allCT">
+                <label for="allCT">&nbsp All Content-Types </label>
+            </div>
+        </div>
+    </div>
+    <div id="isps" class="isps">
+        <h5>ISPs</h5>
+        <div class="isp-wrapper">
+            <div class="isp-checkbox-wrapper">
+                <input type="checkbox" required id="allISP" class="isp-box" value="allISP">
+                <label for="allISP">&nbsp All ISPs</label>
+            </div>
+        </div>
+    </div>
+    <div class="canvas-item" id="canvas-item">
+        <canvas class="chart" id="myChart2"></canvas>
+    </div>
+    <div class="button">
+        <button class="selectButton" id="submit" class="submit">Submit Filters</button>
+    </div>
+    
+    <script src="js/chartTTL.js"></script>
 </body>
 
 </html>
