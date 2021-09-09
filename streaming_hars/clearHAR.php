@@ -1,5 +1,49 @@
 <?php
+session_start();
 
+if ( isset( $_SESSION['user_id'] ) ) {
+    // Grab user data from the database using the user_id
+    // Let them access the "logged in only" pages
+} 
+else {
+    // Redirect them to the login page
+    header("Location: login.html");
+}
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
+/*
+$serverName = "localhost";
+$userName = "root";
+$password = "";
+$databaseName = "webdb";
+*/
+
+$serverName = "localhost";
+$userName = "athinaf";
+$password = "12345#";
+$databaseName = 'har_proj';
+
+$filename =  $_FILES['myfile']['name'];
+/*echo file_get_contents("test.txt");
+echo file_get_contents($filename);*/
+
+$location = "../server_folder/".$filename;
+
+if (move_uploaded_file($_FILES['myfile']['tmp_name'], $location)){
+  echo '<p> File uploaded successfully</p>';
+}
+else{
+  echo '<b> Error uploading file.</b>';
+}
+
+$isp = $_POST['isp'];
+$city = $_POST['city'];
+$lon = $_POST['lon'];
+$lat = $_POST['lat'];
+
+$redir = 0;
+//--------------------------------------
 
 require_once 'vendor/autoload.php';
 
@@ -8,7 +52,7 @@ use JsonMachine\JsonMachine;
 
 $fp = fopen('cleanFile.json', 'w');
 
-$objects = JsonMachine::fromFile('techsetupgear.wordpress.com_Archive-21-07-23-21-24-35.har', '/log/entries', new ExtJsonDecoder);
+$objects = JsonMachine::fromFile($location, '/log/entries', new ExtJsonDecoder);
 foreach($objects as $object){
     foreach ($object as $key => $value) {
             if ($key == "pageref") {
@@ -111,10 +155,20 @@ foreach($objects as $object){
     
 }
 fwrite($fp, json_encode((array)$object));
+
+
 }
 
 
 
 fclose($fp);
+$redir = 1;
+
+
+if ($redir == 1) {
+    header("Location: ../user_functionality/main_user.php");
+    echo $redir;
+  //exit;
+  }
 
 ?>
