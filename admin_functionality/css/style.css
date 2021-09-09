@@ -5,8 +5,7 @@ body {
   /* display: grid; */
   place-content: center;
   font-family: "Lato", sans-serif;
-  background: #000000;
-  background: linear-gradient(to right, #161616, #000000);
+  background: #161616;
 }
 
 .container {
@@ -51,17 +50,18 @@ body {
 }
 
 .nav-item a:hover {
-  background: #da22ff; /* fallback for old browsers */
+  background: #83a4d4; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -73,17 +73,18 @@ body {
 }
 
 .active a {
-  background: #da22ff; /* fallback for old browsers */
+  background: #83a4d4; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -91,17 +92,18 @@ body {
 }
 
 .navbar-brand {
-  background: #da22ff; /* fallback for old browsers */
+  background: #83a4d4; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #b6fbff,
+    #83a4d4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -132,29 +134,19 @@ body {
   position: relative;
   margin-left: 10px;
   margin-right: 10px;
-  /* color: honeydew; */
-  background: #616161; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #9bc5c3,
-    #616161
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #9bc5c3,
-    #616161
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #c4e0e5;
+
   font-size: 110%;
   border-radius: 4px;
   border: none;
   transition: ease-out 0.3s;
   outline: none;
-  border: 1px solid #616161;
+  border: 1px solid #c4e0e5;
   z-index: 1;
 }
 
 .selectButton:hover {
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -167,16 +159,16 @@ body {
   bottom: 0;
   opacity: 0;
   content: "";
-  background: #da22ff; /* fallback for old browsers */
+  background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #e9e4f0,
+    #d3cce3
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #9114ff,
-    #da22ff
+    #e9e4f0,
+    #d3cce3
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
