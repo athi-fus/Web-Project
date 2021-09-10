@@ -1,5 +1,5 @@
 /* Section Styles */
-#myChart2 {
+#TTLchart {
   position: absolute;
   width: 55%;
   background: #343a40;
@@ -7,7 +7,7 @@
   top: 200px;
   right: 60px;
 }
-#myChart3 {
+#cacheChart {
   position: absolute;
   width: 55%;
   background: #343a40;
@@ -77,6 +77,30 @@ h5 {
   grid-template-columns: 1fr 1fr;
 }
 .ct-checkbox-wrapper {
+  /* margin-top: 3px; */
+  margin-left: 20px;
+}
+
+.isp-checkbox-wrapper {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.isp-checkbox-wrapper-cache {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.isp-wrapper-cache {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: max-content;
+}
+
+.ct-wrapper-cache {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ct-checkbox-wrapper-cache {
   /* margin-top: 3px; */
   margin-left: 20px;
 }
@@ -252,8 +276,8 @@ input[type="checkbox"]:checked::after {
   font-family: "Share Tech Mono", monospace;
   font-style: italic;
   font-size: 120%;
-  margin-top: 20px;
-  margin-left: 280px;
+  margin-top: 10px;
+  margin-left: 100px;
   background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,

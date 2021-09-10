@@ -56,7 +56,8 @@
         </div>
     </nav>
     <div class="welcomeText">
-        Select one filter for each category and see the results of TTL per Content type on graph:
+        On first section select one filter for each category and see the results of TTL per Content type on graph.<br><br>
+        On second section select one filter for each category and see the results of percentage of cacheability directives on graph.
     </div>
     <section id="sectionTTL">
         <div id="content-types" class="content-types">
@@ -69,7 +70,7 @@
             </div>
         </div>
         <div class="canvas-item" id="canvas-item">
-            <canvas class="chart" id="myChart2"></canvas>
+            <canvas class="chart" id="TTLchart"></canvas>
         </div>
         <div id="isps" class="isps">
             <h5>ISPs</h5>
@@ -89,24 +90,24 @@
     </section>
     
     <section id="sectionCacheability">
-        <div id="content-types" class="content-types">
+        <div id="content-types-cache" class="content-types-cache">
             <h5>Content Types</h5>
-            <div class="ct-wrapper">
-                <div class="ct-checkbox-wrapper">
-                    <input type="checkbox" required id="allCT" class="ct-box" value="allCT">
-                    <label for="allCT">&nbsp All Content-Types </label>
+            <div class="ct-wrapper-cache">
+                <div class="ct-checkbox-wrapper-cache">
+                    <input type="checkbox" required id="allCT-cache" class="ct-box-cache" value="allCT-cache">
+                    <label for="allCT-cache">&nbsp All Content-Types </label>
                 </div>
             </div>
         </div>
         <div class="canvas-item" id="canvas-item">
-            <canvas class="chart" id="myChart3"></canvas>
+            <canvas class="chart" id="cacheChart"></canvas>
         </div>
-        <div id="isps" class="isps">
+        <div id="isps-cache" class="isps-cache">
             <h5>ISPs</h5>
-            <div class="isp-wrapper">
-                <div class="isp-checkbox-wrapper">
-                    <input type="checkbox" required id="allISP" class="isp-box" value="allISP">
-                    <label for="allISP">&nbsp All ISPs</label>
+            <div class="isp-wrapper-cache">
+                <div class="isp-checkbox-wrapper-cache">
+                    <input type="checkbox" required id="allISP-cache" class="isp-box-cache" value="allISP-cache">
+                    <label for="allISP-cache">&nbsp All ISPs</label>
                 </div>
             </div>
         </div>
