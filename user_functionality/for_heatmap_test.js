@@ -1,6 +1,6 @@
 var mymap = L.map('mapid').setView([38.272689, 21.621094], 13);
 
-var marker = L.marker([38.107547, 21.502991]);
+var marker = L.marker([38.107547, 21.502991]).addTo(mymap);
 marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
 var  baselayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
