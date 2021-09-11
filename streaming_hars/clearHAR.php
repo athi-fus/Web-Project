@@ -166,6 +166,7 @@ $redir = 1;
 
 
 if ($redir == 1) {
+    $_SESSION["to_download"] = -1;
     header("Location: ../user_functionality/main_user.php");
     echo $redir;
   //exit;

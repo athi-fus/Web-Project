@@ -5,6 +5,7 @@
 session_start();
 
 if ( isset( $_SESSION['user_id'] ) ) {
+  $_SESSION["to_download"]+=1;
     // Grab user data from the database using the user_id
     // Let them access the "logged in only" pages
 } 
@@ -79,6 +80,17 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 
 <div id="demo3" name="demo3"></div>
 
+<?php if ($_SESSION["to_download"] == 0): ?>
+  <a href="../streaming_hars/cleanFile.json" download>
+  <img src="./imgs/cats.jpg"  alt="cat" id='catss' width="104" height="142" onclick="hideDown()">
+</a>
+<?php endif; ?>
+
+
+<p><?php echo $_SESSION["to_download"]?></p>
+
+
+
 <div id="userStats">
   <h3>My stats:</h3>
     <table>
@@ -125,9 +137,6 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 </div>
 
 
-<a href="../streaming_hars/cleanFile.json" download>
-  <img src="./imgs/cats.jpg"  alt="cat" id='catss' width="104" height="142">
-</a>
 <div id="demo4"></div>
 <script src="ready_download.js"></script>
 <div id="map">
@@ -165,6 +174,16 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
           
         }
       }
+
+
+      function hideDown() {
+          var x = document.getElementById("catss");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+      } 
       </script>
 
  

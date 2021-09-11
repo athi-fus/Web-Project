@@ -256,10 +256,21 @@ else{
     }
     if ($key == "serverIPAddress") {
       $serverIPAddress = $value;
-      $response = file_get_contents('https://freegeoip.app/json/'.$value);
-      $data = json_decode($response);
-      $server_lat = $data->latitude;
-      $server_lon = $data->longitude;
+      //$response = file_get_contents('https://freegeoip.app/json/'.$value);
+     // $data = json_decode($response);
+      //$server_lat = $data->latitude;
+      //$server_lon = $data->longitude;
+
+      $ip_address = $value;
+      $api_access_key = '15f55544c4b6c69056311af5e3f3ee49';
+      $ch = curl_init('http://api.ipstack.com/'.$ip_address.'?access_key=15f55544c4b6c69056311af5e3f3ee49');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response_data = curl_exec($ch);
+      curl_close($ch);
+      $result_data = json_decode($response_data, true);
+      $server_lat = $result_data['latitude'];
+      $server_lon = $result_data['longitude'];
+      //echo $result_data['location']['capital'];
     }
 
     if ($key == "response") {
