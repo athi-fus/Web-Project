@@ -3,16 +3,10 @@
 session_start();
 
 # create database connection
-/*
 $servername = "localhost";
 $username = "athinaf";
 $password = "12345#";
 $dbname = 'har_proj';
-*/
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webdb";
 
 $connect = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -43,6 +37,7 @@ if(!empty($_POST["email"])) {
             $_SESSION['user_id'] = $user->email;
             $_SESSION['uname'] = $user->username;
             $_SESSION['pwd'] = $user->pwd;
+            $_SESSION["to_download"] = 0;
             $ok = true;
             
             $messages[] = 'Successful login!';
