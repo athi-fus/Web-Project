@@ -16,10 +16,11 @@ if(!empty($_POST["email"])) {
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $password = isset($_POST['pwd']) ? $_POST['pwd'] : '';
     $user = $result->fetch_object();
-
+    //$is_admin = $user->is_admin; //boolean
 
     $ok = true;
     $messages = array();
+    $is_admin = 0;
 
     if ( !isset($email) || empty($email) ) {
         $ok = false;
@@ -35,9 +36,10 @@ if(!empty($_POST["email"])) {
             $_SESSION['uname'] = $user->username;
             $_SESSION['pwd'] = $user->pwd;
             $_SESSION["to_download"] = 0;
+            $is_admin = $user->is_admin;
             $ok = true;
-            
             $messages[] = 'Successful login!';
+
         } else {
             $ok = false;
             $messages[] = 'Incorrect email/password combination!';
@@ -47,10 +49,9 @@ if(!empty($_POST["email"])) {
     echo json_encode(
         array(
             'ok' => $ok,
-            'messages' => $messages
+            'messages' => $messages,
+            'is_admin'=> $is_admin
         )
     );
 
 ?>
-
-
