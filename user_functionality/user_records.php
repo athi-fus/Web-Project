@@ -2,7 +2,10 @@
 // Always start this first
 session_start();
 
-include 'dbc.php';
+$servername = "localhost";
+$username = "athinaf";
+$password = "12345#";
+$dbname = 'har_proj';
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -13,7 +16,7 @@ if (!$conn) {
 
 
 $users = array();
-$sql = "SELECT COUNT(id_har)AS numOfRecords, isprovider AS isp FROM `har_file` WHERE user_email = '". $_SESSION['user_id']."' ";
+$sql = "SELECT COUNT(id_har)AS numOfRecords, MAX(date_of_upload) as LastUpload FROM `har_file` WHERE user_email ='". $_SESSION['user_id']."' ";
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){

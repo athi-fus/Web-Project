@@ -26,8 +26,8 @@ if (!$conn) {
 /*$sql = "INSERT INTO user (email, username, pwd, gender)
 VALUES ('alex@gmail.com', 'alexMonkey', 'm@rdy8um', 'male');";
 */
-$sql = "INSERT INTO user (email, username, pwd, gender)
-VALUES ('$email','$uname','$pass','$gender')";
+$sql = "INSERT INTO user (email, username, pwd, gender, is_admin)
+VALUES ('$email','$uname','$pass','$gender', 0)";
 
 
 if (mysqli_query($conn, $sql)) {

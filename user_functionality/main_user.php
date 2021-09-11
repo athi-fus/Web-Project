@@ -82,7 +82,10 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 
 <?php if ($_SESSION["to_download"] == 0): ?>
   <a href="../streaming_hars/cleanFile.json" download>
-  <img src="./imgs/cats.jpg"  alt="cat" id='catss' width="104" height="142" onclick="hideDown()">
+    <figure id = "catoo"> 
+      <img src="./imgs/down.png"  alt="cat" id='catss' width="150px"  onclick="hideDown()">
+      <figcaption id = 'figca'>Ready to download</figcaption>
+  </figure> 
 </a>
 <?php endif; ?>
 

@@ -13,7 +13,7 @@ uReq.onload = function() {
                         '<th>Num of Records</th>'+
                     '</tr>'+
                     '<tr>'+
-                        '<td>'+ counter[0].isp+'</td>'+
+                        '<td>'+ counter[0].LastUpload+'</td>'+
                     '<td>'+ counter[0].numOfRecords+'</td>'+
                     '</tr>'+
                 '</table>';

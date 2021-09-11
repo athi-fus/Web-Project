@@ -202,7 +202,7 @@ require_once 'vendor/autoload.php';
  }
  
  //AUTO EINAI TO SOSTO
- $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."','".$lon."','".$lat."' );";
+ $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."','".$lon."','".$lat."', cast(NOW() as Date) );";
  //$insertRecordQuery = "INSERT INTO har_file  VALUES(null,'user@gmail.com','ISP','PATRA',11,22 );";
  if(mysqli_query($connection, $insertRecordQuery)){
   echo "success";
