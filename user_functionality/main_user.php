@@ -87,7 +87,6 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 <?php endif; ?>
 
 
-<p><?php echo $_SESSION["to_download"]?></p>
 
 
 
@@ -122,7 +121,7 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 <form action="../streaming_hars/clearHAR.php" method="post" enctype="multipart/form-data" name="file-form" id="file-form">
   <!--"../streaming_hars/hars.php"-->
   
-  <div class="fakeFileButton" onmouseover="getInfo()">
+  <div class="fakeFileButton" onclick="getInfo()">
     Browse
     <input type="file" id="myfile" name="myfile"><br><br>
   </div>
@@ -138,7 +137,7 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
 
 
 <div id="demo4"></div>
-<script src="ready_download.js"></script>
+
 <div id="map">
   <!--
     <h3>Heatmap</h3>
