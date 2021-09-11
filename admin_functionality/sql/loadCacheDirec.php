@@ -15,7 +15,7 @@
     WHERE A.id_entry = B.id_entry 
     AND A.name LIKE 'content-type' 
     AND A.value IN $content_types
-    AND hf.provider IN $isps
+    AND hf.isprovider IN $isps
     AND B.name LIKE 'cache-control' 
     AND (B.value LIKE '%public%' 
     OR B.value Like '%private%' 

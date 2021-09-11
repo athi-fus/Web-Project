@@ -17,7 +17,7 @@
     AND hr.value IN $content_types
     AND DAYOFWEEK(e.StartedDateTime) IN $days
     AND e.req_method IN $req_methods
-    AND hf.provider IN $isps
+    AND hf.isprovider IN $isps
     GROUP BY HOUR(e.StartedDateTime)";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){

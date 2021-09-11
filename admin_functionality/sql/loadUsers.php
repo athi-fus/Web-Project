@@ -2,7 +2,7 @@
     session_start();
     include 'dbh.php';
     $users = '';
-    $sql = "SELECT COUNT(username) FROM users";
+    $sql = "SELECT COUNT(username) FROM user";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
