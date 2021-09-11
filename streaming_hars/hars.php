@@ -24,9 +24,9 @@ $databaseName = "webdb";
 */
 
 $serverName = "localhost";
-$userName = "athinaf";
-$password = "12345#";
-$databaseName = 'har_proj';
+$userName = "root";
+$password = "";
+$databaseName = 'web2021final';
 
 
 

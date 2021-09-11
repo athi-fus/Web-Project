@@ -152,6 +152,7 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
       function getInfo(){
                       $.getJSON('http://ip-api.com/json', function(data) {
                       //console.log(JSON.stringify(data, null, 2));
+                      
                       document.getElementById("isp").value = data.org;
                       document.getElementById("city").value = data.city;
                       document.getElementById("lat").value = data.lat;
