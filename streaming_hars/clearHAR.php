@@ -12,18 +12,18 @@ else {
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-/*
+
 $serverName = "localhost";
 $userName = "root";
 $password = "";
 $databaseName = "webdb";
-*/
 
+/*
 $serverName = "localhost";
 $userName = "athinaf";
 $password = "12345#";
 $databaseName = 'har_proj';
-
+*/
 $filename =  $_FILES['myfile']['name'];
 /*echo file_get_contents("test.txt");
 echo file_get_contents($filename);*/
@@ -164,6 +164,12 @@ fwrite($fp, json_encode((array)$object));
 fclose($fp);
 $redir = 1;
 
+$files = glob('../server_folder/*'); // get all file names
+foreach($files as $file){ // iterate files
+  if(is_file($file)) {
+    unlink($file); // delete file
+  }
+}
 
 if ($redir == 1) {
     $_SESSION["to_download"] = -1;
