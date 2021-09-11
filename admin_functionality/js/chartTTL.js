@@ -147,7 +147,7 @@ $("#submit").click(function(){
                 for(var j = 0; j<=10; j++){
                     step_labels.push(firstAge+j*step);        
                 }
-                console.log(step_labels);
+                // console.log(step_labels);
 
                 for(var v=0; v<10; v++){
                     if(v == 9){

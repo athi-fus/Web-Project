@@ -1,7 +1,7 @@
 <?php 
     include 'dbh.php';
     $ips = array();
-    $sql = "SELECT e.lon,e.lat,COUNT(e.id_entry) AS records,hr.lon,hr.lat
+    $sql = "SELECT e.lon as longitude,e.lat as latitude,COUNT(e.id_entry) AS records,hr.lon,hr.lat
     FROM entries as e
     INNER JOIN har_file as hr ON e.id_har = hr.id_har 
     GROUP BY e.lon 
