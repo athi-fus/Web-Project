@@ -1,3 +1,19 @@
+<?php
+// You'd put this code at the top of any "protected" page you create
+
+// Always start this first
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) {
+  $_SESSION["to_download"]+=1;
+    // Grab user data from the database using the user_id
+    // Let them access the "logged in only" pages
+} 
+else {
+    // Redirect them to the login page
+    header("Location: ../user_functionality/login.html"); //BALE TO SWSTO PATH
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta class="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imgs/image.png" type="image/gif" sizes="16x16">
     <title>Its all about HAR</title>
 
     <!-- Fonts -->
@@ -33,26 +50,26 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html"><img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">harHARias</a>
+        <a class="navbar-brand" href="index.php"><img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">harHARias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Basic Analytics</a>
+                    <a class="nav-link" href="index.php">Basic Analytics</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="analyze-time.html">Response times</a>
+                    <a class="nav-link" href="analyze-time.php">Response times</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="analyze-headers.html">Headers HTTP</a>
+                    <a class="nav-link" href="analyze-headers.php">Headers HTTP</a>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" href="map.html">Map for IPs</a>
+                    <a  class="nav-link" href="map.php">Map for IPs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="../user_functionality/logout.php">Logout</a>
                 </li>
             </ul> 
         </div>

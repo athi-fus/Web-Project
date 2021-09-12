@@ -5,7 +5,7 @@
   font-family: "Share Tech Mono", monospace;
   font-style: italic;
   font-size: 120%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-left: 400px;
   background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -66,7 +66,7 @@ section {
 
 #sectionCheckboxes {
   padding-bottom: 450px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 #sectionGraph {
@@ -130,16 +130,16 @@ h5 {
   grid-template-columns: 1fr 1fr;
 }
 .ct-checkbox-wrapper {
-  margin-top: 3px;
+  /* margin-top: 3px; */
   margin-left: 20px;
 }
 
 .days-checkbox-wrapper {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-left: 20px;
 }
 .isp-checkbox-wrapper {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-left: 40px;
 }
 
@@ -155,7 +155,7 @@ h5 {
 .button {
   position: absolute;
   left: 44%;
-  top: 93%;
+  top: 90%;
   max-width: max-content;
   box-sizing: inherit;
   transition-property: all;
