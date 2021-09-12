@@ -14,7 +14,7 @@ else {
     header("Location: login.html");
 }
 ini_set('display_errors',1);
-ini_set('max_execution_time', '300');
+ini_set('max_execution_time', '600');
 error_reporting(E_ALL);
 
  $serverName = "localhost";
