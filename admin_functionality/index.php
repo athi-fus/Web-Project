@@ -45,7 +45,7 @@ else {
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html"><img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">harHARias</a>
+        <a class="navbar-brand" href="index.php"><img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">harHARias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,16 +53,16 @@ else {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Basic Analytics</a>
+                    <a class="nav-link" href="index.php">Basic Analytics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="analyze-time.html">Response times</a>
+                    <a class="nav-link" href="analyze-time.php">Response times</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="analyze-headers.html">Headers HTTP</a>
+                    <a class="nav-link" href="analyze-headers.php">Headers HTTP</a>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" href="map.html">Map for IPs</a>
+                    <a  class="nav-link" href="map.php">Map for IPs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../user_functionality/logout.php">Logout</a>
