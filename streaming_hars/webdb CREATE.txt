@@ -10,9 +10,10 @@ CREATE TABLE har_file (
     id_har int NOT NULL AUTO_INCREMENT,
     user_email VARCHAR(50) NOT NULL,
     isprovider VARCHAR(200),
-	city VARCHAR(50),
-	lon FLOAT,
-	lat FLOAT,
+    city VARCHAR(50),
+    lon FLOAT,
+    lat FLOAT,
+    date_of_upload DATE,
     PRIMARY KEY (id_har,user_email),
     FOREIGN KEY (user_email) REFERENCES user(email)
 );
