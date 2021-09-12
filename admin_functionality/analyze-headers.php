@@ -132,7 +132,7 @@ else {
         <div class="button">
             <button class="selectButton" id="submitCache" class="submit">Submit Filters</button>
         </div>
-        <a href="analyze-headers.html">
+        <a href="analyze-headers.php">
             <div class="scroll-up"></div>
         </a>
     </section>

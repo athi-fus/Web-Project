@@ -153,7 +153,7 @@ else {
         <div class="canvas-item" id="canvas-item">
             <canvas class="chart" id="myChart2"></canvas>
         </div>
-        <a href="analyze-time.html">
+        <a href="analyze-time.php">
             <div class="scroll-up"></div>
         </a>
     </section>
