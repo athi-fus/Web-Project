@@ -17,18 +17,18 @@ ini_set('display_errors',1);
 ini_set('max_execution_time', '300');
 error_reporting(E_ALL);
 
-// $serverName = "localhost";
-// $userName = "root";
-// $password = "";
-// $databaseName = "webdb";
+ $serverName = "localhost";
+ $userName = "root";
+ $password = "";
+ $databaseName = "webdb";
 
 
-
+/*
 $serverName = "localhost";
 $userName = "root";
 $password = "";
 $databaseName = 'web2021final';
-
+*/
 
 
 $redir = 0;
@@ -183,7 +183,7 @@ require_once 'vendor/autoload.php';
  }
  
  //insert har_file in db
- $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."','".$lon."','".$lat."', cast(NOW() as Date) );";
+ $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."',".$lon.",".$lat.", cast(NOW() as Date) );";
  
  if(mysqli_query($connection, $insertRecordQuery)){
   //echo "success";
