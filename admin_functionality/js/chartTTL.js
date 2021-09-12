@@ -1,5 +1,5 @@
 showContentTypes();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery content types
     function showContentTypes(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -14,7 +14,7 @@ showContentTypes();
     }
 
 showContentTypesCache();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery content types but for cacheability directive query
     function showContentTypesCache(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -29,7 +29,7 @@ showContentTypesCache();
     }
 
 showISP();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery isps
     function showISP(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -44,7 +44,7 @@ showISP();
     }
 
     showISPcache();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery isps but for cacheability directive query
     function showISPcache(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -80,7 +80,7 @@ $("#submit").click(function(){
     var isps = [];
 
     checkBoxes();
-
+    // Function that checks wich checkbox is ticked and then pass the values into empty arrays that through Ajax call these values gonna pass to the php file and then through sql query we gonna get the results
     function checkBoxes(){
         var ct_box = document.getElementsByClassName('ct-box');
         for(var k=1; k<ct_box.length; k++){
@@ -123,17 +123,17 @@ $("#submit").click(function(){
                 var final_data = new Array(10).fill(0);
                 var records = [];
                
-
+                // Loop that gonna push data values into records array
                 for(var k=0;k<res.length; k++){
                     records.push(parseInt(res[k].Records));
                 }
-
+                // Loop that gonna push into maxAges and maxAgesunsorted the same values in order to make the correct alignment of data afterwards
                 for(var i=0; i<res.length; i++){
                     maxAges.push(parseInt(res[i].MaxAge.match(/\d+/)));
                     maxAgesUnsorted.push(parseInt(res[i].MaxAge.match(/\d+/)));
                     
                 }
-                maxAges.sort((a,b)=>a-b);
+                maxAges.sort((a,b)=>a-b); //Sort the list in order to have the data sorted
                 if(maxAges.length == 1){
                     firstAge = 0;
                     lastAge = maxAges[0];
@@ -142,13 +142,14 @@ $("#submit").click(function(){
                     lastAge = maxAges[maxAges.length-1];
                 }
                 
-                var step = (lastAge - firstAge)/10 ;
+                var step = (lastAge - firstAge)/10 ; // Create a step that gonna split the 10 asked buckets equally 
 
                 for(var j = 0; j<=10; j++){
                     step_labels.push(firstAge+j*step);        
                 }
                 // console.log(step_labels);
 
+                // Loop that gonna define the buckets asked into the chart.
                 for(var v=0; v<10; v++){
                     if(v == 9){
                         final_labels.push(step_labels[v]+'-'+(step_labels[v+1]));
@@ -157,7 +158,7 @@ $("#submit").click(function(){
                     }
                     
                 }
-
+                // Loop that gonna align the data into the correct buckets.
                 for(var p=0; p<maxAgesUnsorted.length; p++){
                     for(var h=0; h<10; h++){
                         if(step_labels[h] <= maxAgesUnsorted[p] && maxAgesUnsorted[p] <= step_labels[h+1] ){

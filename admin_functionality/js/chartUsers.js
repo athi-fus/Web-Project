@@ -5,7 +5,9 @@ $("#selectUsers").click(function(){
             
     uReq.open("get", "sql/loadUsers.php", true);
     uReq.onload = function() {
-        const counter = this.responseText;
+        const counter = this.responseText; // Take the data from sql query and put the into a variable.
+
+        // output gonna help us display the chart with the text above it.
         var output='';
         
         output += 
@@ -14,9 +16,10 @@ $("#selectUsers").click(function(){
                     '<div class="text-info-js">Records of registered users in database are: '+ counter + '.</div>'+
                 '</div>';
             
-        // document.getElementById("welcomeText").innerHTML = '';
         document.getElementById("canvas-item").innerHTML = output;
 
+
+        // Here is the code in order to create the chart.js 
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
             type: 'bar',
@@ -51,13 +54,6 @@ $("#selectUsers").click(function(){
                 }
             }
         });  
-        
-        // Below with use it in order to update some fields of the graph
-        // const button = document.getElementById('btn').addEventListener('click',loadData);
-        // function loadData(){
-        //     myChart.data.datasets[0].data = [50];
-        //     myChart.update();
-        // }
     };
     uReq.send();
 });
@@ -70,9 +66,11 @@ $("#selectReqMethods").click(function(){
     uReq.open("get", "sql/loadReqMethod.php", true);
     uReq.onload = function() {
         const counter = JSON.parse(this.responseText);
+        // Create arrays in order to put selected data from sql query
         var methods = [];
         var records = [];
-    
+        
+        // Loop in order to push into the empty arrays the needed data.
         for(var i=0; i<counter.length; i++){
             var obj = counter[i];
             methods.push(obj.reqMethod);

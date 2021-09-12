@@ -51,6 +51,7 @@ $("#submit").click(function(){
             } 
         }
 
+        // Replace the [] with () in order to pass the values of the arrays into php files that gonna connect with the sql query.
         content_types = JSON.stringify(content_types).replace(/\[/g, "(").replace(/\]/g, ")"); 
         days = JSON.stringify(days).replace(/\[/g, "(").replace(/\]/g, ")");
         req_methods = JSON.stringify(req_methods).replace(/\[/g, "(").replace(/\]/g, ")");

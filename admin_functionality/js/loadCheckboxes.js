@@ -1,6 +1,6 @@
 // Functions for fetching data from database in order to show them up as checkboxes.
     showContentTypes();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery content types
     function showContentTypes(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -15,7 +15,7 @@
     }
 
     showRequestedMethods();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery requested methods
     function showRequestedMethods(){
         let uReq = new XMLHttpRequest(); // New request object
             
@@ -30,7 +30,7 @@
     }
 
     showISP();
-
+// Here we create a function that gonna take the checkboxes that are needed in order to show all the necessery isps
     function showISP(){
         let uReq = new XMLHttpRequest(); // New request object
             
