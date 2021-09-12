@@ -35,30 +35,9 @@ $redir = 0;
 
 
 $connection = mysqli_connect($serverName, $userName, $password, $databaseName);
-/*
-if(isset($_POST['submit'])){
-  $filename       = $_FILES['myfile']['name'];  
-  $temp_name  = $_FILES['myfile']['tmp_name'];  
-  if(isset($filename) and !empty($filename)){
-    $location = "../server_folder/";      
-      if(move_uploaded_file($temp_name, $location.$filename)){
-          echo 'File uploaded successfully';
-      }else{
-        echo 'UPLOADING FILE FAILED ';
-      }
-  } else {
-      echo 'You should select a file to upload !!';
-  }
-}
 
-$filename       = $_FILES['myfile']['name'];
-$location = "../server_folder/";
-$filepath = "../server_folder/".$filename;
-*/
 
 $filename =  $_FILES['myfile']['name'];
-/*echo file_get_contents("test.txt");
-echo file_get_contents($filename);*/
 
 $location = "../server_folder/".$filename;
 
@@ -88,6 +67,7 @@ require_once 'vendor/autoload.php';
  use JsonMachine\JsonDecoder\PassThruDecoder;
  use JsonMachine\JsonDecoder\ExtJsonDecoder;
 
+ //initialization of variables
  $req_head_name = array();
  $req_head_value = array();
  $res_head_name = array();
@@ -95,6 +75,7 @@ require_once 'vendor/autoload.php';
  global $entry_id, $har_id, $method, $startedDateTime, $url, $status, $statusText, $wait, $serverIPAddress,$server_lon, $server_lat;
 
  
+ //stream for cleaning the file
  $objects = JsonMachine::fromFile($location, '/log/entries', new ExtJsonDecoder);
  foreach($objects as $object){
      foreach ($object as $key => $value) {
@@ -201,27 +182,26 @@ require_once 'vendor/autoload.php';
  }
  }
  
- //AUTO EINAI TO SOSTO
+ //insert har_file in db
  $insertRecordQuery = "INSERT INTO har_file  VALUES(null,'".$_SESSION['user_id']."','".$isp."','".$city."','".$lon."','".$lat."', cast(NOW() as Date) );";
- //$insertRecordQuery = "INSERT INTO har_file  VALUES(null,'user@gmail.com','ISP','PATRA',11,22 );";
+ 
  if(mysqli_query($connection, $insertRecordQuery)){
-  echo "success";
+  //echo "success";
 }
 else{
   echo "error:".mysqli_error($connection);
 }
 
+//get id of inserted file
  $result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = '".$_SESSION['user_id']."'");
 
- //$result = $connection->query("SELECT MAX(id_har) FROM har_file WHERE user_email = 'user@gmail.com'");
 
   while($row = $result->fetch_assoc()) {
    $har_id = $row["MAX(id_har)"];
 
   }
 
- ////////////////////////////////////////////////////////////////////////
-
+//iteration of cleaned file for insertion in db
  foreach($objects as $object){
   foreach ($object as $key => $value) {
     if ($key == "startedDateTime") {
@@ -271,7 +251,6 @@ else{
       $result_data = json_decode($response_data, true);
       $server_lat = $result_data['latitude'];
       $server_lon = $result_data['longitude'];
-      //echo $result_data['location']['capital'];
     }
 
     if ($key == "response") {
@@ -295,6 +274,7 @@ else{
       }
     }
   }
+  //insert entry of har file
   $insertRecordQuery = "INSERT INTO entries VALUES('".$har_id."',null,'".$startedDateTime."','".$wait."','".$serverIPAddress."',".$server_lon.",".$server_lat.",'".$method."','".$url."','".$status."','".$statusText."');";
   if(mysqli_query($connection, $insertRecordQuery)){
     //echo "success";
@@ -303,7 +283,7 @@ else{
     echo "error:".mysqli_error($connection);
  }
 
- 
+ //get id of inserted entry
  $result = $connection->query("SELECT MAX(id_entry) FROM entries WHERE id_har = '".$har_id."';");
 
  while($row = $result->fetch_assoc()) {
@@ -311,6 +291,7 @@ else{
   echo $entry_id;
  }
 
+ //insertion of request headers
  for ($i = 0; $i <= sizeof($req_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$req_head_name[$i]."','".$req_head_value[$i]."', 'request')";
   if(mysqli_query($connection, $insertRecordQuery)){
@@ -321,7 +302,7 @@ else{
  }
   
 }
-
+//insertion of response headers
 for ($i = 0; $i <= sizeof($res_head_name)-1; $i++) {
   $insertRecordQuery = "INSERT INTO header VALUES('".$entry_id."',null , '".$res_head_name[$i]."','".$res_head_value[$i]."', 'response')";
   if(mysqli_query($connection, $insertRecordQuery)){
@@ -334,7 +315,7 @@ else{
 }
 }
 
-
+//empty temporary arrays 
   $req_head_name = array();
   $req_head_value = array();
   $res_head_name = array();
@@ -342,8 +323,7 @@ else{
 
 }
  
- /////////////////////////////////////////////////////////////////////
- 
+ //empty the server file that holds the har files while processing
  $files = glob('../server_folder/*'); // get all file names
 foreach($files as $file){ // iterate files
   if(is_file($file)) {

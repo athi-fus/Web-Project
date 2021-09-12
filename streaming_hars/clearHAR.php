@@ -25,8 +25,6 @@ $password = "12345#";
 $databaseName = 'har_proj';
 */
 $filename =  $_FILES['myfile']['name'];
-/*echo file_get_contents("test.txt");
-echo file_get_contents($filename);*/
 
 $location = "../server_folder/".$filename;
 
@@ -43,15 +41,16 @@ $lon = $_POST['lon'];
 $lat = $_POST['lat'];
 
 $redir = 0;
-//--------------------------------------
 
 require_once 'vendor/autoload.php';
 
 use JsonMachine\JsonDecoder\ExtJsonDecoder;
 use JsonMachine\JsonMachine;
 
+//create a file that new info will be written
 $fp = fopen('cleanFile.json', 'w');
 
+//stream to clean the file
 $objects = JsonMachine::fromFile($location, '/log/entries', new ExtJsonDecoder);
 foreach($objects as $object){
     foreach ($object as $key => $value) {
@@ -154,16 +153,17 @@ foreach($objects as $object){
 
     
 }
+//write processed entry into new file
 fwrite($fp, json_encode((array)$object));
 
 
 }
 
 
-
 fclose($fp);
 $redir = 1;
 
+//empty the server folder that holds har files while processing
 $files = glob('../server_folder/*'); // get all file names
 foreach($files as $file){ // iterate files
   if(is_file($file)) {
