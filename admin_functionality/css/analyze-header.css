@@ -22,7 +22,7 @@ section {
 }
 
 #sectionTTL {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 #sectionCacheability {
@@ -83,7 +83,7 @@ h5 {
 }
 
 .isp-checkbox-wrapper-cache {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-left: 20px;
 }
 .isp-wrapper-cache {
@@ -102,7 +102,7 @@ h5 {
 
 .button {
   position: absolute;
-  left: 13%;
+  left: 65%;
   top: 90%;
   max-width: max-content;
   box-sizing: inherit;
