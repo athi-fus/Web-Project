@@ -2,10 +2,7 @@
 // Always start this first
 session_start();
 
-$servername = "localhost";
-$username = "athinaf";
-$password = "12345#";
-$dbname = 'har_proj';
+include 'dbc.php';
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

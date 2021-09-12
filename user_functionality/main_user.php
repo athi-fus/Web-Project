@@ -20,7 +20,7 @@ else {
   <link rel="icon" href="imgs/image.png" type="image/gif" sizes="16x16">
 
 
-  <title>Please work</title>
+  <title>It's about HAR</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
