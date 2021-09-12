@@ -69,7 +69,7 @@ else {
                     <a  class="nav-link" href="map.php">Map for IPs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="../user_functionality/logout.php">Logout</a>
                 </li>
             </ul> 
         </div>
