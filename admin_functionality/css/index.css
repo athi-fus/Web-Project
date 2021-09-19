@@ -3,7 +3,7 @@
   width: 55%;
   background: #343a40;
   border: 2px solid #555652;
-  margin-top: 5px;
+  margin-top: 3px;
   margin-left: 340px;
 }
 
@@ -103,11 +103,8 @@
 
 .text-info-age {
   position: relative;
-  width: max-content;
   text-align: center;
   font-family: "Share Tech Mono", monospace;
-  margin-top: 10px;
-  margin-left: 200px;
   background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -124,7 +121,7 @@
   -webkit-text-fill-color: transparent;
   -mo-text-fill-color: transparent;
   font-style: italic;
-  font-size: 120%;
+  font-size: 110%;
 }
 
 .text-info-age::before,

@@ -155,7 +155,7 @@ h5 {
 .button {
   position: absolute;
   left: 44%;
-  top: 90%;
+  top: 110%;
   max-width: max-content;
   box-sizing: inherit;
   transition-property: all;
@@ -169,7 +169,8 @@ h5 {
   border: 2px solid #83a4d4;
   position: absolute;
   left: 95%;
-  bottom: 30px;
+  /* bottom: 1px; */
+  top: 780px;
   border-radius: 50px;
   cursor: pointer;
 }

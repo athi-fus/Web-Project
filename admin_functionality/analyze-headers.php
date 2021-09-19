@@ -73,7 +73,7 @@ else {
         </div>
     </nav>
     <div class="welcomeText">
-        On first section select one filter for each category and see the results of TTL per Content type on graph.<br><br>
+        On first section select one filter for each category and see the results of TTL per Content type on graph.<br>
         On second section select one filter for each category and see the results of percentage of cacheability directives on graph.
     </div>
     <section id="sectionTTL">
