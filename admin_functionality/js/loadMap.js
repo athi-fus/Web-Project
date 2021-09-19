@@ -1,4 +1,4 @@
-const mymap = L.map('mapid').setView([37.983810, 23.727539], 6); //Latitude, longitude, zoom level 
+const mymap = L.map('mapid').setView([37.983810, 23.727539], 3); //Latitude, longitude, zoom level 
 
 // Set a marker for the map
 var marker = L.marker([0,0]);

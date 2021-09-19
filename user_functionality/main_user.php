@@ -180,6 +180,12 @@ echo '<h1 id="welcome"> Hello, '.$_SESSION["uname"].'</h1>';
           } else {
             x.style.display = "none";
           }
+          var y = document.getElementById("figca");
+          if (y.style.display === "none") {
+            y.style.display = "block";
+          } else {
+            y.style.display = "none";
+          }
       } 
       </script>
 
