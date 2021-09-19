@@ -225,8 +225,8 @@ else {
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">
-            <img src="image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a class="navbar-brand" href="main_user.php">
+            <img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
             harHARias</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
@@ -235,13 +235,7 @@ else {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="main_user.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Me</a>
@@ -263,12 +257,12 @@ else {
         </div>
         
         <div class="suf">
-            
+         
                 
         <form name="theform" action="update_pass.php" method="POST">   
         <input type="password" id="pwdo" name="pwdo" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                 title="Must contain at least one number and one uppercase letter, one symbol, and at least 8 or more characters" required onblur="checkOldPass()">
-                <span id="see" toggle="#pwdo" class="fa fa-fw fa-eye field-icon toggle-password"  onKeyup="checkform()" ></span><br>
+                <span id="see" toggle="#pwdo" class="fa fa-fw fa-eye field-icon toggle-password" onclick="myFunctionOld()" onKeyup="checkform()" ></span><br>
                 <label for="pwdo">&nbsp;Old Password</label><br><br>
                 
                 <input type="password" id="pwdn" name="pwdn" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
@@ -316,6 +310,15 @@ else {
                     x.type = "password";
                 }
             } 
+
+              function myFunctionOld() {
+                var x = document.getElementById("pwdo");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
 
             //--------------------------------------------------------------------------------------------------------------------------
             // When the user clicks on the password field, show the message box

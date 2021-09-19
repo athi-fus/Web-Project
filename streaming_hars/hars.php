@@ -20,7 +20,7 @@ error_reporting(E_ALL);
  $serverName = "localhost";
  $userName = "root";
  $password = "";
- $databaseName = "webdb";
+ $databaseName = "webathina";
 
 
 /*

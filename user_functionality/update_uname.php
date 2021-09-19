@@ -33,6 +33,7 @@ WHERE email='$email';";
 if (mysqli_query($conn, $sql)) {
   echo "Record updated successfully";
   $_SESSION['uname']=$uname;
+  header("Location: main_user.php");
 } else {
   echo "Error: " , $sql , "<br>" , mysqli_error($conn);
 }

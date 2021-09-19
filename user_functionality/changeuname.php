@@ -225,8 +225,8 @@ else {
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-        <img src="image.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="main_user.php">
+        <img src="imgs/image.png" width="30" height="30" class="d-inline-block align-top" alt="">
         harHARias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -235,13 +235,7 @@ else {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="main_user.php">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Me</a>

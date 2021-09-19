@@ -35,6 +35,7 @@ if (mysqli_query($conn, $sql)) {
   $_SESSION['user_id'] = $email;
   $_SESSION['uname'] = $uname;
   $_SESSION['pwd'] = $pass;
+  $_SESSION["to_download"] = 0;
   header("Location: main_user.php");
   exit();
 } else {
